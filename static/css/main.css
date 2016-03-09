@@ -1,12 +1,14 @@
 @CHARSET "UTF-8";
 
-body {
-	margin-top: 40px;
-	text-align: center;
-	font-size: 14px;
-	font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-	}
+body { 
+    margin-top: 40px;
+    text-align: center; 
+    font-size: 14px; 
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif; 
+}
 
+
+/*
 .dialog label {
 	width:90px;
     float:left;
@@ -15,8 +17,17 @@ body {
 .dialog .field {
 	width:170px;	
 }
+    */
 
-#calendar {
-	width: 900px;
-	margin: 0 auto;
+#event-details .delete-event, #event-details .edit, #event-details.edit .new {
+    display: none;
+}
+
+#event-details.edit .delete-event, #event-details .new, #event-details.edit .edit {
+    display: block;
+}
+
+#calendar { 
+    width: 900px; 
+    margin: 0 auto; 
 }

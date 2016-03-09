@@ -1,4 +1,4 @@
-define([ 'marionette', 'pages/calendar/templates' ], function(Marionette, Templates) {
+define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], function(Marionette, Models, Templates) {
 
     var CalendarView = Marionette.ItemView.extend({
 
@@ -21,7 +21,6 @@ define([ 'marionette', 'pages/calendar/templates' ], function(Marionette, Templa
 
     var EventsView = Backbone.View.extend({
         initialize: function(){
-            // when is this necessary?
             _.bindAll(this, 'select', 'addAll', 'addOne', 'change', 'destroy', 'eventClick'); 
 
             this.collection.bind('reset', this.addAll);
@@ -29,7 +28,6 @@ define([ 'marionette', 'pages/calendar/templates' ], function(Marionette, Templa
             this.collection.bind('change', this.change);            
             this.collection.bind('destroy', this.destroy);
 
-            // Do we really want this?
             this.eventView = new EventView();            
         },
         render: function() {
@@ -59,7 +57,7 @@ define([ 'marionette', 'pages/calendar/templates' ], function(Marionette, Templa
         },        
         select: function(startDate, endDate) {
             this.eventView.collection = this.collection;
-            this.eventView.model = new Event({start: startDate, end: endDate});
+            this.eventView.model = new Models.Event({start: startDate, end: endDate});
             this.eventView.render();            
         },
         eventClick: function(fcEvent) {
@@ -90,24 +88,20 @@ define([ 'marionette', 'pages/calendar/templates' ], function(Marionette, Templa
     });
 
     var EventView = Backbone.View.extend({
-        el: $('#eventDialog'),
+        el: $('#event-details'),
+
+        events: {
+            'click .save-event': 'save',
+            'click .delete-event': 'destroy'
+        },
+        
         initialize: function() {
             _.bindAll(this, 'render', 'open', 'save', 'close', 'destroy');           
+            this.$el.on('show.bs.modal', this.open);
         },
         render: function() {
-            var buttons = {'Ok': this.save};
-            if (!this.model.isNew()) {
-                _.extend(buttons, {'Delete': this.destroy});
-            }
-            _.extend(buttons, {'Cancel': this.close});            
-            
-            this.$el.dialog({
-                modal: true,
-                title: (this.model.isNew() ? 'New' : 'Edit') + ' Event',
-                buttons: buttons,
-                open: this.open
-            });
-
+            if(!this.model.isNew()) this.$el.addClass('edit');
+            this.$el.modal('show');
             return this;
         },        
         open: function() {
@@ -126,7 +120,8 @@ define([ 'marionette', 'pages/calendar/templates' ], function(Marionette, Templa
             }
         },
         close: function() {
-            this.$el.dialog('close');
+            this.$el.removeClass('edit');
+            this.$el.modal('hide');
         },
         destroy: function() {
             this.model.destroy({success: this.close});

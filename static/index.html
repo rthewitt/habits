@@ -22,17 +22,31 @@
 		<div id='page-container'></div>		
 		<div id='calendar'></div>		
 		
-		<div id='eventDialog' class='dialog ui-helper-hidden'>
-			<form>
-				<div>
-					<label>Title:</label>
-					<input id='title' class="field" type="text"></input>
-				</div>
-				<div>
-					<label>Color:</label>
-					<input id='color' class="field" type="text"></input>
-				</div>
-			</form>
+		<div id='event-details' class='modal fade' role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title new">New Event</h4>
+                    <h4 class="modal-title edit">Edit Event</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- make this a template -->
+                    <form>
+                        <div>
+                            <label>Title:</label>
+                            <input id='title' class="field" type="text"></input>
+                        </div>
+                        <div>
+                            <label>Color:</label>
+                            <input id='color' class="field" type="text"></input>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default save-event" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-default delete-event" data-dismiss="modal">Delete</button>
+                </div>
+			</div>
 		</div>		
 	</body>
 </html>
