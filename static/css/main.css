@@ -18,6 +18,10 @@ body {
 	width:170px;	
 }
     */
+.form-group {
+    width: 40%;
+    margin: 10 auto;
+}
 
 #event-details .delete-event, #event-details .edit, #event-details.edit .new {
     display: none;

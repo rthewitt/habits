@@ -23,30 +23,55 @@
 		<div id='calendar'></div>		
 		
 		<div id='event-details' class='modal fade' role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title new">New Event</h4>
-                    <h4 class="modal-title edit">Edit Event</h4>
-                </div>
-                <div class="modal-body">
-                    <!-- make this a template -->
-                    <form>
-                        <div>
-                            <label>Title:</label>
-                            <input id='title' class="field" type="text"></input>
-                        </div>
-                        <div>
-                            <label>Color:</label>
-                            <input id='color' class="field" type="text"></input>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default save-event" data-dismiss="modal">Save</button>
-                    <button type="button" class="btn btn-default delete-event" data-dismiss="modal">Delete</button>
-                </div>
-			</div>
 		</div>		
 	</body>
 </html>
+
+<!-- TODO MAKE THESE IDS GLOBALLY UNIQUE OR USE CLASSES -->
+<!-- USE TEMPLATE LOGIC INSTEAD OF CSS LOGIC -->
+<script id="details-template" type="text/html">
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title new">New Event</h4>
+            <h4 class="modal-title edit">Edit Event</h4>
+        </div>
+        <div class="modal-body">
+            <form>
+                <!-- add unique ids here, so I can place a label for -->
+                <div class="form-group">
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" value="" <%= plan_morning ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Morning Planning</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" value="" <%= first_meal ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Ate In (Lunch)</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" value="" <%= last_meal ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Ate In (Dinner)</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" value="" <%= prepare_meal ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Prepared Lunch</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" value="" <%= plan_evening ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Evening Planning</label>
+                    </div>
+                </div>
+                <!--  TODO REMOVE -->
+                <!--
+                <div>
+                    <label>Title:</label>
+                    <input id='title' class="field" type="text" value="<%- title %>" />
+                </div>
+                <div>
+                    <label>Color:</label>
+                    <input id='color' class="field" type="text" value="<%- color%>" />
+                </div>
+                -->
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default save-event" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-default delete-event" data-dismiss="modal">Delete</button>
+        </div>
+    </div>
+</script>

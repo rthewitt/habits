@@ -87,7 +87,8 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         }        
     });
 
-    var EventView = Backbone.View.extend({
+    // TODO Continue to migrate to Marionette
+    var EventView = Marionette.ItemView.extend({
         el: $('#event-details'),
 
         events: {
@@ -99,14 +100,26 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             _.bindAll(this, 'render', 'open', 'save', 'close', 'destroy');           
             this.$el.on('show.bs.modal', this.open);
         },
-        render: function() {
+
+        onRender: function() {
             if(!this.model.isNew()) this.$el.addClass('edit');
             this.$el.modal('show');
             return this;
         },        
+
+        template: _.template($('#details-template').html()),
+
+        // this is currently unused, but occurs when we show the modal
         open: function() {
-            this.$('#title').val(this.model.get('title'));
-            this.$('#color').val(this.model.get('color'));            
+            // TEMP
+            //console.log('manually compiling template');
+            //var tempTemplate = _.template($('#details-template').html());
+            //var stuff = tempTemplate(this.model.attributes);
+            //this.$('.modal-body').html(stuff);
+            
+            // OLD
+            //this.$('#title').val(this.model.get('title'));
+            //this.$('#color').val(this.model.get('color'));            
         },        
         save: function() {
             this.model.set({'title': this.$('#title').val(), 'color': this.$('#color').val()});
