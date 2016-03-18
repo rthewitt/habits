@@ -23,6 +23,11 @@ body {
     margin: 10 auto;
 }
 
+#habit-type {
+    height: 30px;
+    width: 40px;
+}
+
 #event-details .delete-event, #event-details .edit, #event-details.edit .new {
     display: none;
 }
@@ -31,7 +36,18 @@ body {
     display: block;
 }
 
+#summary {
+    position: absolute;
+    left: 10%;
+    top: 30%;
+    /*
+    float: left;
+    margin-left: 60px;
+    */
+}
+
 #calendar { 
-    width: 900px; 
-    margin: 0 auto; 
+    float: right;
+    width: 900px;
+    margin-right: 20%;
 }

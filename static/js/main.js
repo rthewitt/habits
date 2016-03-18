@@ -45,43 +45,21 @@ require([ 'jquery', 'socketio', 'backbone', 'marionette', 'mustache',
 
             var app = new Marionette.Application();
 
+            // TODO we want the calendar page layout to have several regions (summary, main, etc)
+            // we will show the layout in the pageContainer, and the Layout will manage the regions
+            // We can then switch views without reloading the page(s)
             app.addRegions({
                 menu: "#menu",
                 pageContainer: "#page-container"
             });
 
-            // hook, if I need it
-            // app.addInitializer(function() { });
 
             app.on("start", function() {
-
                 if(!Backbone.History.started) Backbone.history.start();
-
-                /*
-                socket = io.connect('ws://' + document.domain + ':' + location.port + '/test', { 'reconnectionAttempts': 5 });
-
-                // History is not the same as history
-                // moved above for now (no socketio)
-                // if(!Backbone.History.started) Backbone.history.start();
-
-                // status still pending
-                socket.on('connect', function() {
-                    connecting = false;
-                });
-
-                socket.on('reconnecting', function() {
-                    connecting = true;
-                    updateProxyStatus(null, null);
-                });
-
-                socket.on('reconnect_failed', function() {
-                    alert("Unable to reach Admin VM");
-                });
-                */
-
             });
 
             msgBus.vent.on("app:show", function(view) {
+                // TODO I added this logic - all it used to do was show
                 return app.pageContainer.show(view);
             });
 

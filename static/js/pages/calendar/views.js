@@ -1,5 +1,8 @@
 define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], function(Marionette, Models, Templates) {
 
+    var msgBus = Backbone.Wreqr.radio.channel('global');
+    var emptyEvent = new Models.Event({id: undefined});
+
     var CalendarView = Marionette.ItemView.extend({
 
         tagName: 'div',
@@ -19,9 +22,10 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         }
     });
 
-    var EventsView = Backbone.View.extend({
+    // Do we really want EventView and SummaryView to belong here?
+    var EventsView = Marionette.ItemView.extend({
         initialize: function(){
-            _.bindAll(this, 'select', 'addAll', 'addOne', 'change', 'destroy', 'eventClick'); 
+            _.bindAll(this, 'select', 'addAll', 'addOne', 'change', 'destroy', 'eventClick', 'eventMouseOver', 'eventMouseOut'); 
 
             this.collection.bind('reset', this.addAll);
             this.collection.bind('add', this.addOne);
@@ -29,6 +33,8 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.collection.bind('destroy', this.destroy);
 
             this.eventView = new EventView();            
+            this.summaryView = new SummaryView({ model: emptyEvent });            
+            this.summaryView.render();
         },
         render: function() {
             this.$el.fullCalendar({
@@ -43,6 +49,8 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                 ignoreTimezone: false,                
                 select: this.select,
                 eventClick: this.eventClick,
+                eventMouseover: this.eventMouseOver,
+                eventMouseout: this.eventMouseOut,
                 eventDrop: this.eventDropOrResize,        
                 eventResize: this.eventDropOrResize
             });
@@ -51,6 +59,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         addAll: function() {
             this.$el.fullCalendar('addEventSource', this.collection.toJSON());
         },
+        // we have added to the collection? Where?
         addOne: function(event) {
             console.log("Ok, we added to the collection, but the SERVER will be giving us the id, so let's wait until we get a response before rendering!")
             //this.$el.fullCalendar('renderEvent', event.toJSON());
@@ -59,6 +68,15 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.eventView.collection = this.collection;
             this.eventView.model = new Models.Event({start: startDate, end: endDate});
             this.eventView.render();            
+        },
+        // When do we want to use msgBus and when do we just want to render directly?
+        eventMouseOver: function(fcEvent) {
+            this.summaryView.model = this.collection.get(fcEvent.id);
+            this.summaryView.render();
+        },
+        eventMouseOut: function(fcEvent) {
+            this.summaryView.model = emptyEvent
+            this.summaryView.render();
         },
         eventClick: function(fcEvent) {
             this.eventView.model = this.collection.get(fcEvent.id);
@@ -78,6 +96,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                 this.$el.fullCalendar('updateEvent', fcEvent);           
             }
         },
+        // TODO verify / improve this function, I have never used it
         eventDropOrResize: function(fcEvent) {
             // Lookup the model that has the ID of the event and update its attributes
             this.collection.get(fcEvent.id).save({start: fcEvent.start, end: fcEvent.end});            
@@ -87,7 +106,14 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         }        
     });
 
-    // TODO Continue to migrate to Marionette
+    // TODO move template out of index.html
+    var SummaryView = Marionette.ItemView.extend({
+        el: '#summary',
+        className: 'from-views-js',
+        template: _.template($('#summary-template').html())
+    });
+
+
     var EventView = Marionette.ItemView.extend({
         el: $('#event-details'),
 
@@ -109,20 +135,21 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
 
         template: _.template($('#details-template').html()),
 
-        // this is currently unused, but occurs when we show the modal
-        open: function() {
-            // TEMP
-            //console.log('manually compiling template');
-            //var tempTemplate = _.template($('#details-template').html());
-            //var stuff = tempTemplate(this.model.attributes);
-            //this.$('.modal-body').html(stuff);
-            
-            // OLD
-            //this.$('#title').val(this.model.get('title'));
-            //this.$('#color').val(this.model.get('color'));            
-        },        
+        open: function() {}, // occurs when we show the modal
+
         save: function() {
-            this.model.set({'title': this.$('#title').val(), 'color': this.$('#color').val()});
+            // This could be avoided with a model binder, but it will work for now.
+            //this.model.set({'title': this.$('#title').val(), 'color': this.$('#color').val()});
+            // I need to be consistent in my JSON & form naming conventions (not python)
+            this.model.set({
+                'prepare_meal': this.$('#prepare_meal').is(':checked'),
+                'first_meal': this.$('#first_meal').is(':checked'),
+                'type': Number(this.$('#habit-type').val()),
+                'last_meal': this.$('#last_meal').is(':checked'),
+                'plan_morning': this.$('#plan_morning').is(':checked'),
+                'plan_evening': this.$('#plan_evening').is(':checked'),
+                'prepare_meal': this.$('#prepare_meal').is(':checked')
+            });
             
             if (this.model.isNew()) {
                 // this is a reference to the EventsView collection
