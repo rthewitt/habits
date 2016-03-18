@@ -3,7 +3,6 @@
 from flask import Flask, jsonify, request, copy_current_request_context, url_for, send_from_directory
 from werkzeug.serving import run_simple
 from werkzeug.wsgi import DispatcherMiddleware
-#from flask.ext.socketio import SocketIO, emit
 import atexit
 import json
 import uuid
