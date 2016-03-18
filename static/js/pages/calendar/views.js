@@ -141,14 +141,16 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             // This could be avoided with a model binder, but it will work for now.
             //this.model.set({'title': this.$('#title').val(), 'color': this.$('#color').val()});
             // I need to be consistent in my JSON & form naming conventions (not python)
+            var eventType = Number(this.$('#habit-type').val());
             this.model.set({
                 'prepare_meal': this.$('#prepare_meal').is(':checked'),
                 'first_meal': this.$('#first_meal').is(':checked'),
-                'type': Number(this.$('#habit-type').val()),
+                'type': eventType,
                 'last_meal': this.$('#last_meal').is(':checked'),
                 'plan_morning': this.$('#plan_morning').is(':checked'),
                 'plan_evening': this.$('#plan_evening').is(':checked'),
-                'prepare_meal': this.$('#prepare_meal').is(':checked')
+                'prepare_meal': this.$('#prepare_meal').is(':checked'),
+                'color': this.model.getColorForType(eventType)
             });
             
             if (this.model.isNew()) {

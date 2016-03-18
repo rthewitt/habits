@@ -13,20 +13,27 @@ define([ 'backbone' ], function(Backbone) {
                       'first_meal': false,
                       'last_meal': false
                   },
+
         // FIXME this does not get set appropriately on form change, 
         // we need to listen on change or set it in the view
         // It would be better if it didn't happen in model init...
         initialize: function() {
-            switch(this.get('type')) {
+            this.set('color', this.getColorForType(this.get('type')));
+        },
+
+        getColorForType: function(t) {
+            var color = '';
+            switch(t) {
                 case 1:
-                    this.set('color', '#091A69');
+                    color = '#091A69';
                     break;
                 case 2:
-                    this.set('color', 'green');
+                    color = 'green';
                     break;
                 default:
                     break;
             }
+            return color;
         }
     });
 
