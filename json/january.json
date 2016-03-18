@@ -1,295 +1,491 @@
-[{
-    "id": 3,
-    "start": "2016-01-03",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 4,
-    "start": "2016-01-04",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 5,
-    "start": "2016-01-05",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 6,
-    "start": "2016-01-06",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 7,
-    "start": "2016-01-07",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 8,
-    "start": "2016-01-08",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 9,
-    "start": "2016-01-09",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 10,
-    "start": "2016-01-10",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 11,
-    "start": "2016-01-11",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 12,
-    "start": "2016-01-12",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 13,
-    "start": "2016-01-13",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 14,
-    "start": "2016-01-14",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 15,
-    "start": "2016-01-15",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": false,
-    "last_meal": true 
-}, {
-    "id": 16,
-    "start": "2016-01-16",
-    "end": null,
-    "allDay": true,
-    "comment": "skydiving",
-    "plan_morning": false,
-    "plan_evening": false,
-    "prepare_meal": false,
-    "first_meal": false,
-    "last_meal": true
-}, {
-    "id": 17,
-    "start": "2016-01-17",
-    "end": null,
-    "allDay": true,
-    "comment": "skydiving",
-    "plan_morning": false,
-    "plan_evening": false,
-    "prepare_meal": false,
-    "first_meal": false,
-    "last_meal": true
-}, {
-    "id": 18,
-    "start": "2016-01-18",
-    "end": null,
-    "allDay": true,
-    "comment": "returned home afternoon",
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": false,
-    "last_meal": true
-}, {
-    "id": 19,
-    "start": "2016-01-19",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true, 
-    "last_meal": true
-}, {
-    "id": 20,
-    "start": "2016-01-20",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 21,
-    "start": "2016-01-21",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 22,
-    "start": "2016-01-22",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 23,
-    "start": "2016-01-23",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 24,
-    "start": "2016-01-24",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": false,
-    "first_meal": false,
-    "last_meal": true 
-}, {
-    "id": 25,
-    "start": "2016-01-25",
-    "end": null,
-    "allDay": true,
-    "plan_morning": false,
-    "plan_evening": false,
-    "prepare_meal": true,
-    "first_meal": false,
-    "last_meal": false 
-}, {
-    "id": 26,
-    "start": "2016-01-26",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}, {
-    "id": 27,
-    "start": "2016-01-27",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": false,
-    "last_meal": false 
-}, {
-    "id": 28,
-    "start": "2016-01-28",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": false,
-    "prepare_meal": false,
-    "first_meal": false,
-    "last_meal": false 
-}, {
-    "id": 29,
-    "start": "2016-01-29",
-    "end": null,
-    "allDay": true,
-    "plan_morning": false,
-    "plan_evening": false,
-    "prepare_meal": false,
-    "first_meal": false,
-    "last_meal": false 
-}, {
-    "id": 30,
-    "start": "2016-01-30",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": false,
-    "first_meal": false,
-    "last_meal": false 
-}, {
-    "id": 31,
-    "start": "2016-01-31",
-    "end": null,
-    "allDay": true,
-    "plan_morning": true,
-    "plan_evening": true,
-    "prepare_meal": true,
-    "first_meal": true,
-    "last_meal": true 
-}]
+[
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-03", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 1, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-03", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 2
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-04", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 3, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-04", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 4
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-05", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 5, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-05", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 6
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-06", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 7, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-06", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 8
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-07", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 9, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-07", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 10
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-08", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 11, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-08", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 12
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-09", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 13, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-09", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 14
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-10", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 15, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-10", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 16
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-11", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 17, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-11", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 18
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-12", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 19, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-12", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 20
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-13", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 21, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-13", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 22
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-14", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 23, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-14", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 24
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-15", 
+        "first_meal": false, 
+        "type": 2, 
+        "id": 25, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-15", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 26
+    }, 
+    {
+        "comment": "skydiving", 
+        "prepare_meal": false, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-16", 
+        "first_meal": false, 
+        "type": 2, 
+        "id": 27, 
+        "last_meal": true
+    }, 
+    {
+        "comment": "skydiving", 
+        "prepare_meal": false, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-17", 
+        "first_meal": false, 
+        "type": 2, 
+        "id": 28, 
+        "last_meal": true
+    }, 
+    {
+        "comment": "returned home afternoon", 
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-18", 
+        "first_meal": false, 
+        "type": 2, 
+        "id": 29, 
+        "last_meal": true
+    }, 
+    {
+        "comment": "returned home afternoon", 
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-18", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 30
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-19", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 31, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-19", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 32
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-20", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 33, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-20", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 34
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-21", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 35, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-21", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 36
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-22", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 37, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-22", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 38
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-23", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 39, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-23", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 40
+    }, 
+    {
+        "prepare_meal": false, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-24", 
+        "first_meal": false, 
+        "type": 2, 
+        "id": 41, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-24", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 42
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-25", 
+        "first_meal": false, 
+        "type": 2, 
+        "id": 43, 
+        "last_meal": false
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-26", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 44, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-26", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 45
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-27", 
+        "first_meal": false, 
+        "type": 2, 
+        "id": 46, 
+        "last_meal": false
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-27", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 47
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-28", 
+        "plan_evening": false, 
+        "type": 1, 
+        "id": 48
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-30", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 49
+    }, 
+    {
+        "prepare_meal": true, 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-31", 
+        "first_meal": true, 
+        "type": 2, 
+        "id": 50, 
+        "last_meal": true
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-31", 
+        "plan_evening": true, 
+        "type": 1, 
+        "id": 51
+    }
+]

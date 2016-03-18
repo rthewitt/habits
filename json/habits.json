@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "name": "No name",
+        "description": "Default nothing"
+    },
+    {
+        "id": 1,
+        "name": "Planning",
+        "description": "Bookmark my days by thinking through what needs to be done and how those things fit into my priorities."
+    },
+    {
+        "id": 2,
+        "name": "Food & Spending",
+        "description": "Waste less money by preparing my own lunches and eating in whenever possible."
+    },
+    {
+        "id": 3,
+        "name": "Morning Routine & Exercise",
+        "description": "Get an early start to my day, and get into the right mindset by running, stretching or working out."
+    }
+]

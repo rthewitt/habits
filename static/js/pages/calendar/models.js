@@ -3,6 +3,7 @@ define([ 'backbone' ], function(Backbone) {
     var Event = Backbone.Model.extend({
         defaults: {
                       'title': '',
+                      'type': 0,
                       'color': 'purple',
                       'plan_morning': false,
                       'plan_evening': false,
