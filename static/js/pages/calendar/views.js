@@ -57,6 +57,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         },
         // apparently this isn't needed in order to add to the collection...
         addAll: function() {
+            // TODO can I just specify the damned JSON collection so that it's dynamic?
             this.$el.fullCalendar('addEventSource', this.collection.toJSON());
         },
         // we have added to the collection? Where?
@@ -66,7 +67,9 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         },        
         select: function(startDate, endDate) {
             this.eventView.collection = this.collection;
-            this.eventView.model = new Models.Event({start: startDate, end: endDate});
+            // CHEATING!!!
+            var eventType = Number($('#EVENTTYPE').val());
+            this.eventView.model = Models.getModelForAttrs({ type: eventType });
             this.eventView.render();            
         },
         // When do we want to use msgBus and when do we just want to render directly?
@@ -87,10 +90,36 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             var fcEvent = this.$el.fullCalendar('clientEvents', event.get('id'))[0];
             console.log('change event after server response');
             if(fcEvent === undefined) {
-                this.$el.fullCalendar('renderEvent', event.toJSON());
+                console.log("event did not have an id");
+                /*
+                 * FIXME - we are hacking this now, we want the event source to update!!!!  
+                 * another alternative it to simply do nothing, because if I update the 
+                 * server-side collection then the next time I load the page it will be there 
+                 * it creates a disparity, I would rather the eventsource was... not static...
+                 *
+                 * We have two options: either provide fullCalendar with an events function
+                 * explicitly calling the callback, or
+                 *
+                 * provide a JSON url for it to retrieve events from. It may be able to just use
+                 * the backbone collection object... or it could just use the same API to pull
+                 * in which case I would have two collections instead of a derivative collection
+                 *
+                 * See:
+                 *
+                 * http://www.ngroutes.com/questions/1aecbd3/changes-in-eventsources-model-do-not-reflect-in-fullcalendar.html
+                 */
+               
+                
+                this.$el.fullCalendar('renderEvent', event.toJSON(), true);
             } else {
-                console.log(fcEvent);
-                //this.$el.fullCalendar('renderEvent', event.toJSON());
+                console.log("event had an id: " + fcEvent);
+                /*
+                 * When we change an event in the Backbone Collection
+                 * we still need to let Fullcalendar know what to
+                 * render... I don't really know why they can't
+                 * be the same object. Do I want them to be the same?
+                 * If they are the same, I cannot easily share the model
+                 */
                 fcEvent.title = event.get('title');
                 fcEvent.color = event.get('color');
                 this.$el.fullCalendar('updateEvent', fcEvent);           
@@ -142,23 +171,45 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             //this.model.set({'title': this.$('#title').val(), 'color': this.$('#color').val()});
             // I need to be consistent in my JSON & form naming conventions (not python)
             var eventType = Number(this.$('#habit-type').val());
+
             this.model.set({
-                'prepare_meal': this.$('#prepare_meal').is(':checked'),
-                'first_meal': this.$('#first_meal').is(':checked'),
                 'type': eventType,
-                'last_meal': this.$('#last_meal').is(':checked'),
-                'plan_morning': this.$('#plan_morning').is(':checked'),
-                'plan_evening': this.$('#plan_evening').is(':checked'),
-                'prepare_meal': this.$('#prepare_meal').is(':checked'),
-                'color': this.model.getColorForType(eventType)
+                // TODO remove this
+                'color': this.model.getColorForType(eventType) // do we still want to do this?
             });
-            
+
+            // assumes model has already been set??
             if (this.model.isNew()) {
-                // this is a reference to the EventsView collection
-                this.collection.create(this.model, {success: this.close});
+                var newEvent;
+                switch(eventType) {
+                    // planning
+                    case 1:
+                        this.model.set({
+                            'plan_morning': this.$('#plan_morning').is(':checked'),
+                            'plan_evening': this.$('#plan_evening').is(':checked')
+                        });
+                        break;
+                    // food
+                    case 2:
+                        this.model.set({
+                            'prepare_meal': this.$('#prepare_meal').is(':checked'),
+                            'first_meal': this.$('#first_meal').is(':checked'),
+                            'last_meal': this.$('#last_meal').is(':checked')
+                        });
+                        break;
+                    // morning
+                    case 3:
+                        //this.model.set({});
+                        break;
+                    default:
+                        break;
+                }
+                this.model.save();
+                this.collection.add(this.model, {success: this.close});
             } else {
                 // this is a reference to the model created above
-                this.model.save({}, {success: this.close});
+                // sends the whole model
+                this.model.save({success: this.close});
             }
         },
         close: function() {

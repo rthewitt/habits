@@ -19,6 +19,8 @@
         <script data-main="js/main" src="js/libs/requirejs/require.js"></script>
 	</head>
 	<body>
+        <!-- THIS IS A HACK TO SIMULATE EXTERNAL STATE FROM PROGRAM-->
+        <input id="EVENTTYPE" type="text" val="2" />
         <div id='page-container'>
 		    <div id='summary'></div>		
             <div id='calendar'></div>		
@@ -37,38 +39,51 @@ But soon we'll be sharing the template with other views
     <div>
         <div><%= typeof start === 'undefined' ? 'PLACEHOLDER' : start %></div>
         Habit: (type=<%- type %>) -- TODO
-        <form>
-            <input id="summary-habit-type" min="0" max="3" type="number" value=<%-type %>" />
-            <!-- add unique ids here, so I can place a label for -->
-            <div class="form-group">
-                <div class="checkbox disabled">
-                    <label><input type="checkbox" id="summary-plan_morning" value="" <%= plan_morning ? 'checked="checked"' : '' %> disabled >Morning Planning</label>
+        <% switch(type) {
+           case 1: 
+           %>
+            <form>
+                <input id="summary-habit-type" min="0" max="3" type="number" value=<%-type %>" />
+                <!-- add unique ids here, so I can place a label for -->
+                <div class="form-group">
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="summary-plan_morning" value="" <%= plan_morning ? 'checked="checked"' : '' %> disabled >Morning Planning</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="summary-plan_evening" value="" <%= plan_evening ? 'checked="checked"' : '' %> disabled >Evening Planning</label>
+                    </div>
                 </div>
-                <div class="checkbox disabled">
-                    <label><input type="checkbox" id="summary-first_meal" value="" <%= first_meal ? 'checked="checked"' : '' %> disabled >Ate In (Lunch)</label>
+            </form>
+           <%
+             break;
+           case 2: 
+           %>
+            <form>
+                <input id="summary-habit-type" min="0" max="3" type="number" value=<%-type %>" />
+                <!-- add unique ids here, so I can place a label for -->
+                <div class="form-group">
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="summary-first_meal" value="" <%= first_meal ? 'checked="checked"' : '' %> disabled >Ate In (Lunch)</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="summary-last_meal" value="" <%= last_meal ? 'checked="checked"' : '' %> disabled >Ate In (Dinner)</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="summary-prepare_meal" value="" <%= prepare_meal ? 'checked="checked"' : '' %> disabled >Prepared Lunch</label>
+                    </div>
                 </div>
-                <div class="checkbox disabled">
-                    <label><input type="checkbox" id="summary-last_meal" value="" <%= last_meal ? 'checked="checked"' : '' %> disabled >Ate In (Dinner)</label>
-                </div>
-                <div class="checkbox disabled">
-                    <label><input type="checkbox" id="summary-prepare_meal" value="" <%= prepare_meal ? 'checked="checked"' : '' %> disabled >Prepared Lunch</label>
-                </div>
-                <div class="checkbox disabled">
-                    <label><input type="checkbox" id="summary-plan_evening" value="" <%= plan_evening ? 'checked="checked"' : '' %> disabled >Evening Planning</label>
-                </div>
-            </div>
-            <!--  TODO REMOVE -->
-            <!--
-            <div>
-                <label>Title:</label>
-                <input id='title' class="field" type="text" value="<%- title %>" />
-            </div>
-            <div>
-                <label>Color:</label>
-                <input id='color' class="field" type="text" value="<%- color%>" />
-            </div>
-            -->
-        </form>
+            </form>
+           <%
+             break;
+           case 3: 
+           %>
+           NO TEMPLATE FOR THIS HABIT TYPE
+           <%
+             break;
+           default:
+           %>
+           NO TEMPLATE FOR THIS HABIT TYPE
+        <% } %>
     </div>
 </script>
 
@@ -82,6 +97,9 @@ But soon we'll be sharing the template with other views
             <h4 class="modal-title edit">Edit Event</h4>
         </div>
         <div class="modal-body">
+        <% switch(type) {
+           case 1: 
+           %>
             <form>
                 <!-- add unique ids here, so I can place a label for -->
                 <input id="habit-type" type="number" min="0" max="3" value="<%- type %>" />
@@ -89,6 +107,19 @@ But soon we'll be sharing the template with other views
                     <div class="checkbox disabled">
                         <label><input type="checkbox" id="plan_morning" value="" <%= plan_morning ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Morning Planning</label>
                     </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="plan_evening" value="" <%= plan_evening ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Evening Planning</label>
+                    </div>
+                </div>
+            </form>
+            <%
+             break;
+           case 2: 
+           %>
+            <form>
+                <!-- add unique ids here, so I can place a label for -->
+                <input id="habit-type" type="number" min="0" max="3" value="<%- type %>" />
+                <div class="form-group">
                     <div class="checkbox disabled">
                         <label><input type="checkbox" id="first_meal" value="" <%= first_meal ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Ate In (Lunch)</label>
                     </div>
@@ -98,22 +129,25 @@ But soon we'll be sharing the template with other views
                     <div class="checkbox disabled">
                         <label><input type="checkbox" id="prepare_meal" value="" <%= prepare_meal ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Prepared Lunch</label>
                     </div>
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" id="plan_evening" value="" <%= plan_evening ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Evening Planning</label>
-                    </div>
                 </div>
-                <!--  TODO REMOVE -->
-                <!--
-                <div>
-                    <label>Title:</label>
-                    <input id='title' class="field" type="text" value="<%- title %>" />
-                </div>
-                <div>
-                    <label>Color:</label>
-                    <input id='color' class="field" type="text" value="<%- color%>" />
-                </div>
-                -->
             </form>
+            <%
+             break;
+           case 3: 
+           %>
+            <form>
+                <!-- add unique ids here, so I can place a label for -->
+                <input id="habit-type" type="number" min="0" max="3" value="<%- type %>" />
+                <div class="form-group">
+                    <span>TEMPLATE NOT CREATED FOR THIS HABBIT TYPE</span>
+                </div>
+            </form>
+            <%
+             break;
+           default:
+           %>
+           NOT SHOWING TEMPLATE FOR DEFAULT EVENT TYPE
+        <% } %>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default save-event" data-dismiss="modal">Save</button>

@@ -40,10 +40,25 @@ body {
     position: absolute;
     left: 10%;
     top: 30%;
-    /*
-    float: left;
-    margin-left: 60px;
-    */
+}
+
+/*
+ * This is a temporary experiment
+ * We need to override the fullcalendar rendering
+ * because color is element.style, probably JS triggered.
+ * EXCEPT for new events... so perhaps that's only if
+ * the color attribute is set.  We may be able to get away
+ * with setting CSS to white and leaving color off of the event
+ * JSON.
+ */
+.fc-event-container > a {
+    height: 36px;
+    background-color: white;
+    border-color: white;
+    background-size: auto, auto, 128px 10px, 128px 10px, 100%;
+    background-repeat: no-repeat;
+    background-position: left, right, 0px -3px, 0px 29px, left;
+    background-image: url("../images/habits/red-only.svg"), url("../images/habits/green-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/x-only.svg");;
 }
 
 #calendar { 
