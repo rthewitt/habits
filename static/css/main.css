@@ -62,25 +62,23 @@ body {
 .fc-habit-plan-0-0 {
 }
 
+.fc-habit-plan-1-0 {
+    height: 25px;
+    background-size: 128px 10px;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    background-image: url("../images/habits/blue-bar-only.svg");
+}
+
 .fc-habit-plan-0-1 {
+    height: 25px;
+    background-size: 128px 10px;
+    background-repeat: no-repeat;
+    background-position: 0px 16px;
+    background-image: url("../images/habits/blue-bar-only.svg");
 }
 
 .fc-habit-plan-1-1 {
-}
-
-.fc-habit-plan-1-x {
-}
-
-.fc-habit-plan-x-1 {
-}
-
-.fc-habit-plan-x-x {
-}
-
-.fc-habit-plan-1-1 {
-}
-
-.fc-habit-plan {
     height: 25px;
     background-size: 128px 10px;
     background-repeat: no-repeat;
@@ -88,13 +86,56 @@ body {
     background-image: url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg");
 }
 
-.fc-habit-food {
+.fc-habit-food-0-0-0 {
+}
+.fc-habit-food-0-0-1 {
+    height: 36px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-image: url("../images/habits/green-only.svg");
+}
+.fc-habit-food-0-1-0 {
+    height: 36px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-image: url("../images/habits/green-x-only.svg");
+}
+.fc-habit-food-0-1-1 {
+    height: 36px;
+    background-size: auto, 100%;
+    background-repeat: no-repeat;
+    background-position: right, left;
+    background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-x-only.svg");
+}
+.fc-habit-food-1-0-0 {
+    height: 36px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-image: url("../images/habits/green-only.svg");
+}
+.fc-habit-food-1-0-1 {
+    height: 36px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left, right;
+    background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-only.svg");
+}
+.fc-habit-food-1-1-0 {
+    height: 36px;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-x-only.svg");
+}
+.fc-habit-food-1-1-1 {
     height: 36px;
     background-size: auto, auto, 128px 10px, 128px 10px, 100%;
     background-repeat: no-repeat;
     background-position: left, right, 0px -3px, 0px 29px, left;
-    background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/green-x-only.svg");
-    /*background-image: url("../images/habits/blue-only.svg"), url("../images/habits/blue-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-x-only.svg");*/
+    background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-only.svg"), url("../images/habits/green-horiz-bar-only.svg"), url("../images/habits/green-horiz-bar-only.svg"), url("../images/habits/green-x-only.svg");
 }
 
 #calendar { 

@@ -86,23 +86,38 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.eventView.render();
         },
         eventRender: function(fcEvent, elem) {
-                         console.log('element was ' + elem.attr('class'));
             var hEvent = this.collection.get(fcEvent.id);
-            var clz;
+
+            var planHabits = ['plan_morning', 'plan_evening'],
+                foodHabits = ['first_meal', 'prepare_meal', 'last_meal'],
+                morningHabits = [];
+
+            var clz, props;
             switch(hEvent.get('type')) {
                 case 1:
+                    props = planHabits;
                     clz = 'plan';
                     break;
                 case 2:
+                    props = foodHabits;
                     clz = 'food';
                     break;
                 case 3:
+                    props = morningHabits;
                     clz = 'morning';
                     break;
                 default:
             }
             if(clz !== undefined) {
-                elem.addClass('fc-habit-'+clz);
+                numHabits = props.length;
+                append = _.reduce(props, function(memo, item){ 
+
+                    console.log("memo " + memo);
+                    var wasTrue = hEvent.get(item);
+                    console.log('wasTrue: '+wasTrue);
+                    return memo + Number(wasTrue) + (props.indexOf(item) == numHabits-1 ? '' : '-')
+                    }, '-')
+                elem.addClass('fc-habit-'+clz+append);
             }
         },
         change: function(event) {
