@@ -54,53 +54,42 @@ body {
     text-align: center;
 }
 
-/*
- * This is a temporary experiment
- * We need to override the fullcalendar rendering
- * because color is element.style, probably JS triggered.
- * EXCEPT for new events... so perhaps that's only if
- * the color attribute is set.  We may be able to get away
- * with setting CSS to white and leaving color off of the event
- * JSON.
- */
-
-.food-0-0 {
-}
-
-.food-0-1 {
-}
-
-.food-1-1 {
-}
-
-.food-1-x {
-}
-
-.food-x-1 {
-}
-
-.food-x-x {
-}
-
-.food-1-1 {
-}
-
-/*
 .fc-event-container > a {
-    height: 36px;
-    background-color: white;
     border-color: white;
+    background-color: white;
+}
+
+.fc-habit-plan-0-0 {
+}
+
+.fc-habit-plan-0-1 {
+}
+
+.fc-habit-plan-1-1 {
+}
+
+.fc-habit-plan-1-x {
+}
+
+.fc-habit-plan-x-1 {
+}
+
+.fc-habit-plan-x-x {
+}
+
+.fc-habit-plan-1-1 {
+}
+
+.fc-habit-plan {
+    height: 25px;
     background-size: 128px 10px;
     background-repeat: no-repeat;
-    background-position: 0px 3px, 0px 24px, center;
+    background-position: 0px 0px, 0px 16px, center;
     background-image: url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg");
 }
-*/
 
-.fc-event-container > a {
+.fc-habit-food {
     height: 36px;
-    background-color: white;
-    border-color: white;
     background-size: auto, auto, 128px 10px, 128px 10px, 100%;
     background-repeat: no-repeat;
     background-position: left, right, 0px -3px, 0px 29px, left;

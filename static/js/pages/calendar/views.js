@@ -25,7 +25,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
     // Do we really want EventView and SummaryView to belong here?
     var EventsView = Marionette.ItemView.extend({
         initialize: function(){
-            _.bindAll(this, 'select', 'addAll', 'addOne', 'change', 'destroy', 'eventClick', 'eventMouseOver', 'eventMouseOut'); 
+            _.bindAll(this, 'select', 'addAll', 'addOne', 'change', 'destroy', 'eventClick', 'eventRender', 'eventMouseOver', 'eventMouseOut'); 
 
             this.collection.bind('reset', this.addAll);
             this.collection.bind('add', this.addOne);
@@ -52,8 +52,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                 eventClick: this.eventClick,
                 eventMouseover: this.eventMouseOver,
                 eventMouseout: this.eventMouseOut,
-                eventDrop: this.eventDropOrResize,        
-                eventResize: this.eventDropOrResize
+                eventRender: this.eventRender,        
             });
         },
         // apparently this isn't needed in order to add to the collection...
@@ -85,6 +84,26 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         eventClick: function(fcEvent) {
             this.eventView.model = this.collection.get(fcEvent.id);
             this.eventView.render();
+        },
+        eventRender: function(fcEvent, elem) {
+                         console.log('element was ' + elem.attr('class'));
+            var hEvent = this.collection.get(fcEvent.id);
+            var clz;
+            switch(hEvent.get('type')) {
+                case 1:
+                    clz = 'plan';
+                    break;
+                case 2:
+                    clz = 'food';
+                    break;
+                case 3:
+                    clz = 'morning';
+                    break;
+                default:
+            }
+            if(clz !== undefined) {
+                elem.addClass('fc-habit-'+clz);
+            }
         },
         change: function(event) {
             // Look up the underlying event in the calendar and update its details from the model
@@ -125,11 +144,6 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                 fcEvent.color = event.get('color');
                 this.$el.fullCalendar('updateEvent', fcEvent);           
             }
-        },
-        eventDropOrResize: function(fcEvent) {
-            // Lookup the model that has the ID of the event and update its attributes
-            // TODO understand why this existed - we may want to remove resize completely though
-            //this.collection.get(fcEvent.id).save({start: fcEvent.start, end: fcEvent.end});            
         },
         destroy: function(event) {
             this.$el.fullCalendar('removeEvents', event.id);         
