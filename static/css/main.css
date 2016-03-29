@@ -36,10 +36,22 @@ body {
     display: block;
 }
 
+#active-habit-area {
+    position: absolute;
+    right: 5%;
+    top: 30%;
+    width: 20%;
+}
+
 #summary {
     position: absolute;
-    left: 10%;
+    left: 5%;
     top: 30%;
+    width: 20%;
+}
+
+#summary > div:first-child {
+    text-align: center;
 }
 
 /*
@@ -51,6 +63,40 @@ body {
  * with setting CSS to white and leaving color off of the event
  * JSON.
  */
+
+.food-0-0 {
+}
+
+.food-0-1 {
+}
+
+.food-1-1 {
+}
+
+.food-1-x {
+}
+
+.food-x-1 {
+}
+
+.food-x-x {
+}
+
+.food-1-1 {
+}
+
+/*
+.fc-event-container > a {
+    height: 36px;
+    background-color: white;
+    border-color: white;
+    background-size: 128px 10px;
+    background-repeat: no-repeat;
+    background-position: 0px 3px, 0px 24px, center;
+    background-image: url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg");
+}
+*/
+
 .fc-event-container > a {
     height: 36px;
     background-color: white;
@@ -58,11 +104,12 @@ body {
     background-size: auto, auto, 128px 10px, 128px 10px, 100%;
     background-repeat: no-repeat;
     background-position: left, right, 0px -3px, 0px 29px, left;
-    background-image: url("../images/habits/red-only.svg"), url("../images/habits/green-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/x-only.svg");;
+    background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/green-x-only.svg");
+    /*background-image: url("../images/habits/blue-only.svg"), url("../images/habits/blue-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-x-only.svg");*/
 }
 
 #calendar { 
     float: right;
     width: 900px;
-    margin-right: 20%;
+    margin-right: 25%;
 }

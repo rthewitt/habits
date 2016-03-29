@@ -39,9 +39,10 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         render: function() {
             this.$el.fullCalendar({
                 header: {
-                    left: 'prev,next today',
                     center: 'title',
-                    right: 'month,basicWeek,basicDay'
+                    //right: 'month,basicWeek,basicDay'
+                    left: '',
+                    right: 'prev,next today'
                 },
                 selectable: true,
                 selectHelper: true,
@@ -67,9 +68,9 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         },        
         select: function(startDate, endDate) {
             this.eventView.collection = this.collection;
-            // CHEATING!!!
-            var eventType = Number($('#EVENTTYPE').val());
-            this.eventView.model = Models.getModelForAttrs({ type: eventType });
+            // TODO move active-event-type somewhere else
+            var eventType = Number($('#active-habit-type').val());
+            this.eventView.model = Models.getModelForAttrs({ type: eventType, allDay: true, start: startDate.toISOString() });
             this.eventView.render();            
         },
         // When do we want to use msgBus and when do we just want to render directly?
@@ -125,10 +126,10 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                 this.$el.fullCalendar('updateEvent', fcEvent);           
             }
         },
-        // TODO verify / improve this function, I have never used it
         eventDropOrResize: function(fcEvent) {
             // Lookup the model that has the ID of the event and update its attributes
-            this.collection.get(fcEvent.id).save({start: fcEvent.start, end: fcEvent.end});            
+            // TODO understand why this existed - we may want to remove resize completely though
+            //this.collection.get(fcEvent.id).save({start: fcEvent.start, end: fcEvent.end});            
         },
         destroy: function(event) {
             this.$el.fullCalendar('removeEvents', event.id);         
@@ -167,21 +168,10 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         open: function() {}, // occurs when we show the modal
 
         save: function() {
-            // This could be avoided with a model binder, but it will work for now.
-            //this.model.set({'title': this.$('#title').val(), 'color': this.$('#color').val()});
-            // I need to be consistent in my JSON & form naming conventions (not python)
-            var eventType = Number(this.$('#habit-type').val());
-
-            this.model.set({
-                'type': eventType,
-                // TODO remove this
-                'color': this.model.getColorForType(eventType) // do we still want to do this?
-            });
 
             // assumes model has already been set??
             if (this.model.isNew()) {
-                var newEvent;
-                switch(eventType) {
+                switch(this.model.get('type')) {
                     // planning
                     case 1:
                         this.model.set({

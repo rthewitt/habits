@@ -9,6 +9,8 @@ define([ 'backbone' ], function(Backbone) {
             'color': 'white',
         },
 
+        urlRoot: 'events',
+
         // We are moving from color to images, but for limited browsers
         // maybe we want to use only colors?
         initialize: function() {

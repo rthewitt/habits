@@ -56,6 +56,9 @@ require([ 'jquery', 'socketio', 'backbone', 'marionette', 'mustache',
 
             app.on("start", function() {
                 if(!Backbone.History.started) Backbone.history.start();
+                $('#active-habit-area').on('change', function(v) {
+                    $('#active-habit-type').val(v.target.value);
+                });
             });
 
             msgBus.vent.on("app:show", function(view) {
