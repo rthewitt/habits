@@ -247,7 +247,6 @@
         "id": 26
     }, 
     {
-        "comment": "skydiving", 
         "prepare_meal": false, 
         "allDay": true, 
         "end": null, 
@@ -258,7 +257,13 @@
         "last_meal": true
     }, 
     {
-        "comment": "skydiving", 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-16", 
+        "type": 1, 
+        "id": 98 
+    }, 
+    {
         "prepare_meal": false, 
         "allDay": true, 
         "end": null, 
@@ -269,7 +274,13 @@
         "last_meal": true
     }, 
     {
-        "comment": "returned home afternoon", 
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-17", 
+        "type": 1, 
+        "id": 99 
+    }, 
+    {
         "prepare_meal": true, 
         "allDay": true, 
         "end": null, 
@@ -280,7 +291,6 @@
         "last_meal": true
     }, 
     {
-        "comment": "returned home afternoon", 
         "allDay": true, 
         "end": null, 
         "plan_morning": true, 
@@ -414,6 +424,13 @@
         "last_meal": false
     }, 
     {
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-25", 
+        "type": 1, 
+        "id": 97 
+    }, 
+    {
         "prepare_meal": true, 
         "allDay": true, 
         "end": null, 
@@ -454,11 +471,34 @@
     {
         "allDay": true, 
         "end": null, 
+        "start": "2016-01-28", 
+        "type": 2, 
+        "id": 96
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
         "plan_morning": true, 
         "start": "2016-01-28", 
         "plan_evening": false, 
         "type": 1, 
         "id": 48
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "start": "2016-01-29", 
+        "type": 2, 
+        "id": 93
+    }, 
+    {
+        "allDay": true, 
+        "end": null, 
+        "plan_morning": true, 
+        "start": "2016-01-29", 
+        "plan_evening": false, 
+        "type": 1, 
+        "id": 94
     }, 
     {
         "allDay": true, 

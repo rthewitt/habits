@@ -40,8 +40,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.$el.fullCalendar({
                 header: {
                     center: 'title',
-                    //right: 'month,basicWeek,basicDay'
-                    left: '',
+                    left: 'month,basicWeek',
                     right: 'prev,next today'
                 },
                 selectable: true,
@@ -53,6 +52,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                 eventMouseover: this.eventMouseOver,
                 eventMouseout: this.eventMouseOut,
                 eventRender: this.eventRender,        
+                eventOrder: 'type'
             });
         },
         // apparently this isn't needed in order to add to the collection...
