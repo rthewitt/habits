@@ -86,7 +86,18 @@ But soon we'll be sharing the template with other views
              break;
            case 3: 
            %>
-           NO TEMPLATE FOR THIS HABIT TYPE
+           <div><h1>Start the ball rolling.<h1></div>
+            <form>
+                <!-- add unique ids here, so I can place a label for -->
+                <div class="form-group">
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="summary-morning_wake" value="" <%= morning_wake ? 'checked="checked"' : '' %> disabled >Wake up</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="summary-morning_run" value="" <%= morning_run ? 'checked="checked"' : '' %> disabled >Morning Run</label>
+                    </div>
+                </div>
+            </form>
            <%
              break;
            default:
@@ -147,7 +158,12 @@ But soon we'll be sharing the template with other views
                 <!-- add unique ids here, so I can place a label for -->
                 <input id="habit-type" type="number" min="0" max="3" value="<%- type %>" style="display: none;" />
                 <div class="form-group">
-                    <span>TEMPLATE NOT CREATED FOR THIS HABBIT TYPE</span>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="morning_wake" value="" <%= morning_wake ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Wake up</label>
+                    </div>
+                    <div class="checkbox disabled">
+                        <label><input type="checkbox" id="morning_run" value="" <%= morning_run ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Morning Run</label>
+                    </div>
                 </div>
             </form>
             <%

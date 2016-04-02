@@ -51,9 +51,10 @@ define([ 'backbone' ], function(Backbone) {
     });
 
     var MorningEvent = Event.extend({
-        // TODO exercise
         defaults: { 
-            'type': 3 
+            'type': 3,
+            'morning_wake': false,
+            'morning_run': false
         }
     });
 

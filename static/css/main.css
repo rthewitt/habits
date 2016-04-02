@@ -59,10 +59,10 @@ body {
     background-color: white;
 }
 
-.fc-habit-plan-0-0 {
+a.fc-habit-plan-0-0 {
 }
 
-.fc-habit-plan-1-0 {
+a.fc-habit-plan-1-0 {
     height: 25px;
     background-size: 128px 10px;
     background-repeat: no-repeat;
@@ -70,7 +70,7 @@ body {
     background-image: url("../images/habits/blue-bar-only.svg");
 }
 
-.fc-habit-plan-0-1 {
+a.fc-habit-plan-0-1 {
     height: 25px;
     background-size: 128px 10px;
     background-repeat: no-repeat;
@@ -78,7 +78,7 @@ body {
     background-image: url("../images/habits/blue-bar-only.svg");
 }
 
-.fc-habit-plan-1-1 {
+a.fc-habit-plan-1-1 {
     height: 25px;
     background-size: 128px 10px;
     background-repeat: no-repeat;
@@ -86,56 +86,84 @@ body {
     background-image: url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg"), url("../images/habits/blue-bar-only.svg");
 }
 
-.fc-habit-food-0-0-0 {
+a.fc-habit-food-0-0-0 {
 }
-.fc-habit-food-0-0-1 {
+a.fc-habit-food-0-0-1 {
     height: 36px;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: right;
     background-image: url("../images/habits/green-only.svg");
 }
-.fc-habit-food-0-1-0 {
+a.fc-habit-food-0-1-0 {
     height: 36px;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url("../images/habits/green-x-only.svg");
 }
-.fc-habit-food-0-1-1 {
+a.fc-habit-food-0-1-1 {
     height: 36px;
     background-size: auto, 100%;
     background-repeat: no-repeat;
     background-position: right, left;
     background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-x-only.svg");
 }
-.fc-habit-food-1-0-0 {
+a.fc-habit-food-1-0-0 {
     height: 36px;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url("../images/habits/green-only.svg");
 }
-.fc-habit-food-1-0-1 {
+a.fc-habit-food-1-0-1 {
     height: 36px;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left, right;
     background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-only.svg");
 }
-.fc-habit-food-1-1-0 {
+a.fc-habit-food-1-1-0 {
     height: 36px;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-x-only.svg");
 }
-.fc-habit-food-1-1-1 {
+a.fc-habit-food-1-1-1 {
     height: 36px;
     background-size: auto, auto, 128px 10px, 128px 10px, 100%;
     background-repeat: no-repeat;
     background-position: left, right, 0px -3px, 0px 29px, left;
     background-image: url("../images/habits/green-only.svg"), url("../images/habits/green-only.svg"), url("../images/habits/green-horiz-bar-only.svg"), url("../images/habits/green-horiz-bar-only.svg"), url("../images/habits/green-x-only.svg");
+}
+
+a.fc-habit-morning-0-0 {
+    height: 36px;
+}
+
+a.fc-habit-morning-1-0 {
+    height: 36px;
+    background-size: auto, auto, 128px 10px, 128px 10px;
+    background-repeat: no-repeat;
+    background-position: left, right, 0px -3px, 0px 29px;
+    background-image: url("../images/habits/light-blue-only.svg"), url("../images/habits/light-blue-only.svg"), url("../images/habits/light-blue-horiz-bar-only.svg"), url("../images/habits/light-blue-horiz-bar-only.svg");
+}
+
+a.fc-habit-morning-0-1 {
+    height: 36px;
+    background-size: auto, auto, 128px 10px, 128px 10px;
+    border-color: #08A5E1;
+    background-color: #08A5E1;
+    background-repeat: no-repeat;
+    background-position: left, right, 0px -3px, 0px 29px;
+    background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-horiz-bar-only.svg");
+}
+
+a.fc-habit-morning-1-1 {
+    height: 36px;
+    border-color: #08A5E1;
+    background-color: #08A5E1;
 }
 
 #calendar { 

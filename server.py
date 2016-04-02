@@ -31,14 +31,20 @@ def root():
 
 @app.route('/events', methods=['GET'])
 def get_all_habits():
-    with open('json/january.json') as jan:
-        habit_json = jan.read()
+    with open('json/all.json') as all_habits:
+        habit_json = all_habits.read()
     return habit_json
 
 @app.route('/events', methods=['POST'])
 def post_new_habit():
     content = request.get_json()
-    content['id'] = uuid.uuid4()
+    content['id'] = str(uuid.uuid4())
+    with open('json/all.json', 'r+') as all_habits:
+        habit_json = json.loads(all_habits.read())
+        habit_json.append(content)
+        all_habits.seek(0)
+        all_habits.write(json.dumps(habit_json))
+        all_habits.truncate()
     return jsonify(content)
 
 @app.route('/events/<event_id>', methods=['PUT'])

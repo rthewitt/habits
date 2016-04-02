@@ -90,7 +90,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
 
             var planHabits = ['plan_morning', 'plan_evening'],
                 foodHabits = ['first_meal', 'prepare_meal', 'last_meal'],
-                morningHabits = [];
+                morningHabits = ['morning_wake', 'morning_run'];
 
             var clz, props;
             switch(hEvent.get('type')) {
@@ -218,7 +218,10 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                         break;
                     // morning
                     case 3:
-                        //this.model.set({});
+                        this.model.set({
+                            'morning_wake': this.$('#morning_wake').is(':checked'),
+                            'morning_run': this.$('#morning_run').is(':checked')
+                        });
                         break;
                     default:
                         break;
