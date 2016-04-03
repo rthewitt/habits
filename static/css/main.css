@@ -146,10 +146,7 @@ a.fc-habit-morning-0-0 {
 
 a.fc-habit-morning-1-0 {
     height: 36px;
-    background-size: auto, auto, 128px 10px, 128px 10px;
     background-repeat: no-repeat;
-    background-position: left, right, 0px -3px, 0px 29px;
-    background-image: url("../images/habits/light-blue-only.svg"), url("../images/habits/light-blue-only.svg"), url("../images/habits/light-blue-horiz-bar-only.svg"), url("../images/habits/light-blue-horiz-bar-only.svg");
 }
 
 a.fc-habit-morning-0-1 {
@@ -159,13 +156,22 @@ a.fc-habit-morning-0-1 {
     background-color: #08A5E1;
     background-repeat: no-repeat;
     background-position: left, right, 0px -3px, 0px 29px;
-    background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-horiz-bar-only.svg");
+    background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-horiz-bar-only.svg"); 
 }
 
 a.fc-habit-morning-1-1 {
     height: 36px;
+    background-size: auto, auto, 128px 10px, 128px 10px, 100%;
     border-color: #08A5E1;
     background-color: #08A5E1;
+    background-repeat: no-repeat;
+    background-position: left, right, 0px -3px, 0px 29px, left;;
+    background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-x-only.svg");
+}
+
+a.fc-day-grid-event {
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 #calendar { 
