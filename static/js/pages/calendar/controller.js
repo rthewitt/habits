@@ -17,7 +17,7 @@ define([ "marionette", "pages/calendar/views", "pages/calendar/models" ], functi
 
             var events = new Models.Events();
 
-            new Views.EventsView({el: $("#calendar"), collection: events}).render();
+            new Views.EventsView({el: $("#calendar"), collection: events}).render()
             // we will need a callback here if we trigger an event...
             events.fetch({ reset: true });
 

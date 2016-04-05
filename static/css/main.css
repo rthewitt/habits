@@ -3,21 +3,24 @@
 body { 
     margin-top: 40px;
     text-align: center; 
+    background-color: #F2FBFF;
     font-size: 14px; 
     font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif; 
 }
 
-
-/*
-.dialog label {
-	width:90px;
-    float:left;
+button, select {
+    background-color: #F2FBFF;
 }
 
-.dialog .field {
-	width:170px;	
+h1, h2, h3, .fc-day-header, .fc-day-number, button, .fc button, select, label {
+    color: #014F6D;
 }
-    */
+
+.fc-unthemed .fc-today, td.fc-today, .fc td.fc-today {
+    background-color: #FFFBF1;
+}
+
+
 .form-group {
     width: 40%;
     margin: 10 auto;
@@ -52,6 +55,10 @@ body {
 
 #summary > div:first-child {
     text-align: center;
+}
+
+.fc-event.incomplete {
+    opacity: 0.2;
 }
 
 .fc-event-container > a {

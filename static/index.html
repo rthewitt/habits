@@ -12,9 +12,9 @@
         <meta http-equiv="pragma" content="no-cache">
 
         <link rel="stylesheet" type="text/css" href="css/bootstrap-2.3.2.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
 		<link rel='stylesheet' type='text/css' href='css/jquery-ui.min.css'/>
 		<link rel='stylesheet' type='text/css' href='css/fullcalendar.css'/>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
 
         <script data-main="js/main" src="js/libs/requirejs/require.js"></script>
 	</head>
@@ -26,7 +26,7 @@
             <input id="active-habit-type" type="number" min="0" max="3" value="1" style="display: none;" />
             <select id="habit-type-select">
                 <option value="1" selected="selected">Planning & Prep</option>
-                <option value="2">Food & Financial</option>
+                <option value="2">Food & Groceries</option>
                 <option value="3">Morning Routine</option>
             </select>
             </form>
@@ -46,63 +46,86 @@ Using IDs here is ok, because we are only creating one copy
 But soon we'll be sharing the template with other views
 -->
 <script id="summary-template" type="text/html">
-    <div><h3><%= typeof start === 'undefined' ? '' : start %></h3></div>
-    <div>
+
+       
         <% switch(type) {
            case 1: 
            %>
-           <div><h1>Planning<h1></div>
-            <form>
-                <!-- add unique ids here, so I can place a label for -->
-                <div class="form-group">
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" id="summary-plan_morning" value="" <%= plan_morning ? 'checked="checked"' : '' %> disabled >Morning Planning</label>
-                    </div>
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" id="summary-plan_evening" value="" <%= plan_evening ? 'checked="checked"' : '' %> disabled >Evening Planning</label>
-                    </div>
+            <div class = "panel panel-default">
+                <div class = "panel-heading">
+                    <h3 class = "panel-title"><%= typeof start === 'undefined' ? '' : start %></h3>
+                    <h1>Planning<h1>
                 </div>
-            </form>
+
+                <div class = "panel-body">
+                    <form>
+                        <!-- add unique ids here, so I can place a label for -->
+                        <div class="form-group">
+                            <div class="checkbox disabled">
+                                <label><input type="checkbox" id="summary-plan_morning" value="" <%= plan_morning ? 'checked="checked"' : '' %> disabled >Morning Planning</label>
+                            </div>
+                            <div class="checkbox disabled">
+                                <label><input type="checkbox" id="summary-plan_evening" value="" <%= plan_evening ? 'checked="checked"' : '' %> disabled >Evening Planning</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
            <%
              break;
            case 2: 
            %>
-           <div><h1>Food & Groceries<h1></div>
-            <form>
-                <!-- add unique ids here, so I can place a label for -->
-                <div class="form-group">
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" id="summary-first_meal" value="" <%= first_meal ? 'checked="checked"' : '' %> disabled >Ate In (Lunch)</label>
-                    </div>
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" id="summary-last_meal" value="" <%= last_meal ? 'checked="checked"' : '' %> disabled >Ate In (Dinner)</label>
-                    </div>
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" id="summary-prepare_meal" value="" <%= prepare_meal ? 'checked="checked"' : '' %> disabled >Prepared Lunch</label>
-                    </div>
+            <div class = "panel panel-default">
+                <div class = "panel-heading">
+                    <h3 class = "panel-title"><%= typeof start === 'undefined' ? '' : start %></h3>
+                    <h1>Food & Groceries<h1>
                 </div>
-            </form>
+
+                <div class = "panel-body">
+                    <form>
+                        <!-- add unique ids here, so I can place a label for -->
+                        <div class="form-group">
+                            <div class="checkbox disabled">
+                                <label><input type="checkbox" id="summary-first_meal" value="" <%= first_meal ? 'checked="checked"' : '' %> disabled >Ate In (Lunch)</label>
+                            </div>
+                            <div class="checkbox disabled">
+                                <label><input type="checkbox" id="summary-last_meal" value="" <%= last_meal ? 'checked="checked"' : '' %> disabled >Ate In (Dinner)</label>
+                            </div>
+                            <div class="checkbox disabled">
+                                <label><input type="checkbox" id="summary-prepare_meal" value="" <%= prepare_meal ? 'checked="checked"' : '' %> disabled >Prepared Lunch</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
            <%
              break;
            case 3: 
            %>
-           <div><h1>Start the ball rolling.<h1></div>
-            <form>
-                <!-- add unique ids here, so I can place a label for -->
-                <div class="form-group">
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" id="summary-morning_wake" value="" <%= morning_wake ? 'checked="checked"' : '' %> disabled >Wake up</label>
-                    </div>
-                    <div class="checkbox disabled">
-                        <label><input type="checkbox" id="summary-morning_run" value="" <%= morning_run ? 'checked="checked"' : '' %> disabled >Morning Run</label>
-                    </div>
+            <div class = "panel panel-default">
+                <div class = "panel-heading">
+                    <h3 class = "panel-title"><%= typeof start === 'undefined' ? '' : start %></h3>
+                    <h1>Early Start<h1>
                 </div>
-            </form>
+
+                <div class = "panel-body">
+                    <form>
+                        <!-- add unique ids here, so I can place a label for -->
+                        <div class="form-group">
+                            <div class="checkbox disabled">
+                                <label><input type="checkbox" id="summary-morning_wake" value="" <%= morning_wake ? 'checked="checked"' : '' %> disabled >Wake up</label>
+                            </div>
+                            <div class="checkbox disabled">
+                                <label><input type="checkbox" id="summary-morning_run" value="" <%= morning_run ? 'checked="checked"' : '' %> disabled >Morning Run</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
            <%
              break;
            default:
            } %>
-    </div>
 </script>
 
 <!-- TODO MAKE THESE IDS GLOBALLY UNIQUE OR USE CLASSES -->

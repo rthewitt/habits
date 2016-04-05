@@ -73,17 +73,26 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.eventView.render();            
         },
         // When do we want to use msgBus and when do we just want to render directly?
-        eventMouseOver: function(fcEvent) {
+        eventMouseOver: function(fcEvent, jsEvent, fcView) {
             this.summaryView.model = this.collection.get(fcEvent.id);
             this.summaryView.render();
+            var anchor = $(jsEvent.target).closest('a');
+            anchor.css('opacity', '0.6');
         },
-        eventMouseOut: function(fcEvent) {
+        eventMouseOut: function(fcEvent, jsEvent, fcView) {
             this.summaryView.model = emptyEvent
             this.summaryView.render();
+            var anchor = $(jsEvent.target).closest('a');
+            opacity = anchor.hasClass('complete') ? '1.0' : '0.2';
+            anchor.css('opacity', opacity);
         },
         eventClick: function(fcEvent) {
             this.eventView.model = this.collection.get(fcEvent.id);
             this.eventView.render();
+        },
+        highlightCurrent: function(highlight) {
+            var opacity = highlight ? '0.2' : '1.0';
+            $('.fc-event.incomplete').css('opacity', opacity);
         },
         eventRender: function(fcEvent, elem) {
             var hEvent = this.collection.get(fcEvent.id);
@@ -118,6 +127,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                     return memo + Number(wasTrue) + (props.indexOf(item) == numHabits-1 ? '' : '-')
                     }, '-')
                 elem.addClass('fc-habit-'+clz+append);
+                elem.addClass( ( append.indexOf('0') === -1 ? 'complete' : 'incomplete' ) )
             }
         },
         change: function(event) {
