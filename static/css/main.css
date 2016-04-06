@@ -209,6 +209,15 @@ a.fc-day-grid-event {
     margin-bottom: 7px;
 }
 
+a.fc-selected {
+    border-color: red;
+    border-width: 2px;
+}
+
+a.fc-day-grid-event:hover {
+    /*border-color: red;*/
+}
+
 #calendar { 
     float: right;
     width: 900px;

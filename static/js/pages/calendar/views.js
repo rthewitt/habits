@@ -32,7 +32,6 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.collection.bind('change', this.change);            
             this.collection.bind('destroy', this.destroy);
 
-            this.eventView = new EventView();            
             this.summaryView = new SummaryView({ model: emptyEvent });            
             this.summaryView.render();
         },
@@ -67,29 +66,53 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         },        
         select: function(startDate, endDate) {
             this.eventView.collection = this.collection;
-            // TODO move active-event-type somewhere else
+            // TODO we should have a list of "current ongoing habits" that render out each new day - manual add only for the past
+            // TODO make this new event create only
             var eventType = Number($('#active-habit-type').val());
             this.eventView.model = Models.getModelForAttrs({ type: eventType, allDay: true, start: startDate.toISOString() });
             this.eventView.render();            
         },
         // When do we want to use msgBus and when do we just want to render directly?
         eventMouseOver: function(fcEvent, jsEvent, fcView) {
-            this.summaryView.model = this.collection.get(fcEvent.id);
-            this.summaryView.render();
+            if(this.isSummaryEmpty()) {
+                this.summaryView.model = this.collection.get(fcEvent.id);
+                this.summaryView.render();
+            }
             var anchor = $(jsEvent.target).closest('a');
             anchor.css('opacity', '0.6');
         },
-        eventMouseOut: function(fcEvent, jsEvent, fcView) {
-            this.summaryView.model = emptyEvent
+        emptySummary: function() {
+            this.summaryView.model = emptyEvent;
             this.summaryView.render();
+        },
+        isSummaryEmpty: function() {
+            var isEmpty = this.summaryView.model === emptyEvent || this.summaryView.model.id === undefined;
+            return isEmpty;
+        },
+        eventMouseOut: function(fcEvent, jsEvent, fcView) {
             var anchor = $(jsEvent.target).closest('a');
-            opacity = anchor.hasClass('complete') ? '1.0' : '0.2';
+            console.log('num selected: '+this.$('.fc-selected').length);
+            if(!this.$('.fc-selected').length){
+                this.summaryView.model = emptyEvent;
+                this.summaryView.render();
+            }
+            opacity = anchor.hasClass('complete') ? '1.0' : (anchor.hasClass('fc-selected') ? '0.6' : '0.2');
             anchor.css('opacity', opacity);
         },
-        eventClick: function(fcEvent) {
-            this.eventView.model = this.collection.get(fcEvent.id);
-            this.eventView.render();
+        eventClick: function(fcEvent, jsEvent) {
+            var anchor = $(jsEvent.target.closest('a'));
+            if(anchor.hasClass('fc-selected')) {
+                anchor.removeClass('fc-selected');
+                this.emptySummary();
+            } else {
+                // TODO remove 0.6 hardcoded opacity from other incomplete, unselected event - first try css
+                this.$('.fc-selected').removeClass('fc-selected');
+                anchor.addClass('fc-selected');
+                this.summaryView.model = this.collection.get(fcEvent.id);
+                this.summaryView.render();
+            }
         },
+        // WAIT, doesn't css do this natively with :hover?
         highlightCurrent: function(highlight) {
             var opacity = highlight ? '0.2' : '1.0';
             $('.fc-event.incomplete').css('opacity', opacity);
