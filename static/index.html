@@ -136,7 +136,6 @@ But soon we'll be sharing the template with other views
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <!-- TODO remove this, use actual logic or a different set of templates -->
             <h4 class="modal-title new">New Event</h4>
-            <h4 class="modal-title edit">Edit Event</h4>
         </div>
         <div class="modal-body">
         <% switch(type) {
@@ -147,10 +146,10 @@ But soon we'll be sharing the template with other views
                 <input id="habit-type" type="number" min="0" max="3" value="<%- type %>" style="display: none;" />
                 <div class="form-group">
                     <div class="checkbox disabled">
-                        <label><input type="checkbox" id="plan_morning" value="" <%= plan_morning ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Morning Planning</label>
+                        <label><input type="checkbox" id="plan_morning" value="" >Morning Planning</label>
                     </div>
                     <div class="checkbox disabled">
-                        <label><input type="checkbox" id="plan_evening" value="" <%= plan_evening ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Evening Planning</label>
+                        <label><input type="checkbox" id="plan_evening" value="" >Evening Planning</label>
                     </div>
                 </div>
             </form>
@@ -163,13 +162,13 @@ But soon we'll be sharing the template with other views
                 <input id="habit-type" type="number" min="0" max="3" value="<%- type %>" style="display: none;" />
                 <div class="form-group">
                     <div class="checkbox disabled">
-                        <label><input type="checkbox" id="first_meal" value="" <%= first_meal ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Ate In (Lunch)</label>
+                        <label><input type="checkbox" id="first_meal" value="" >Ate In (Lunch)</label>
                     </div>
                     <div class="checkbox disabled">
-                        <label><input type="checkbox" id="last_meal" value="" <%= last_meal ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Ate In (Dinner)</label>
+                        <label><input type="checkbox" id="last_meal" value="" >Ate In (Dinner)</label>
                     </div>
                     <div class="checkbox disabled">
-                        <label><input type="checkbox" id="prepare_meal" value="" <%= prepare_meal ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Prepared Lunch</label>
+                        <label><input type="checkbox" id="prepare_meal" value="" >Prepared Lunch</label>
                     </div>
                 </div>
             </form>
@@ -182,10 +181,10 @@ But soon we'll be sharing the template with other views
                 <input id="habit-type" type="number" min="0" max="3" value="<%- type %>" style="display: none;" />
                 <div class="form-group">
                     <div class="checkbox disabled">
-                        <label><input type="checkbox" id="morning_wake" value="" <%= morning_wake ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Wake up</label>
+                        <label><input type="checkbox" id="morning_wake" value="" >Wake up</label>
                     </div>
                     <div class="checkbox disabled">
-                        <label><input type="checkbox" id="morning_run" value="" <%= morning_run ? 'checked="checked"' : '' %> <%= typeof id === 'undefined' ? '' : 'disabled' %> >Morning Run</label>
+                        <label><input type="checkbox" id="morning_run" value="" >Morning Run</label>
                     </div>
                 </div>
             </form>

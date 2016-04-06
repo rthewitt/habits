@@ -208,7 +208,6 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         },
 
         onRender: function() {
-            if(!this.model.isNew()) this.$el.addClass('edit');
             this.$el.modal('show');
             return this;
         },        
@@ -256,7 +255,6 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             }
         },
         close: function() {
-            this.$el.removeClass('edit');
             this.$el.modal('hide');
         },
         destroy: function() {
