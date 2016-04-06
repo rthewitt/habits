@@ -57,9 +57,6 @@ h1, h2, h3, .fc-day-header, .fc-day-number, button, .fc button, select, label {
     text-align: center;
 }
 
-.fc-event.incomplete {
-    opacity: 0.2;
-}
 
 .fc-event-container > a {
     border-color: white;
@@ -210,12 +207,20 @@ a.fc-day-grid-event {
 }
 
 a.fc-selected {
-    border-color: red;
+    border-color: #FF2C00;
     border-width: 2px;
 }
-
-a.fc-day-grid-event:hover {
-    /*border-color: red;*/
+.fc-event.incomplete {
+    opacity: 0.2;
+}
+a.fc-selected.complete {
+    opacity: 1.0;
+}
+a.fc-selected.incomplete {
+    opacity: 0.6;
+}
+a.fc-event:hover {
+    opacity: 0.6;
 }
 
 #calendar { 
