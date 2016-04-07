@@ -8,7 +8,7 @@ define([ 'backbone' ], function(Backbone) {
             flavor: 'NONE',
             color: 'white',
             description: 'No desc',
-            behaviors: []
+            behaviors: {}
         }
     });
 

@@ -19,7 +19,7 @@
         <script data-main="js/main" src="js/libs/requirejs/require.js"></script>
 	</head>
 	<body>
-        <!-- THIS IS A HACK TO SIMULATE EXTERNAL STATE FROM PROGRAM-->
+        <!-- TODO make this an actual habit template!! -->
         <div id="active-habit-area">
             <h3>Habit Type</h3>
             <form>
@@ -50,86 +50,27 @@ Using IDs here is ok, because we are only creating one copy
 But soon we'll be sharing the template with other views
 -->
 <script id="summary-template" type="text/html">
+    <% if(type !== null ) { %>
+    <div class = "panel panel-default">
+        <div class = "panel-heading">
+            <h3 class = "panel-title"><%= typeof start === 'undefined' ? '' : start %></h3>
+            <h1><%- habit.name %><h1>
+        </div>
 
-       
-        <% switch(type) {
-           case 1: 
-           %>
-            <div class = "panel panel-default">
-                <div class = "panel-heading">
-                    <h3 class = "panel-title"><%= typeof start === 'undefined' ? '' : start %></h3>
-                    <h1>Planning<h1>
-                </div>
-
-                <div class = "panel-body">
-                    <form>
-                        <!-- add unique ids here, so I can place a label for -->
-                        <div class="form-group">
-                            <div class="checkbox disabled">
-                                <label><input type="checkbox" id="summary-plan_morning" value="" <%= plan_morning ? 'checked="checked"' : '' %> disabled >Morning Planning</label>
-                            </div>
-                            <div class="checkbox disabled">
-                                <label><input type="checkbox" id="summary-plan_evening" value="" <%= plan_evening ? 'checked="checked"' : '' %> disabled >Evening Planning</label>
-                            </div>
+        <div class = "panel-body">
+            <form>
+                <!-- add unique ids here, so I can place a label for -->
+                <div class="form-group">
+                    <% for (var bKey in habit.behaviors) { %>
+                        <div class="checkbox disabled">
+                            <label><input type="checkbox" id="summary-<%- bKey %>" value="" <%= behaviors[bKey] ? 'checked="checked"' : '' %> disabled ><%- habit.behaviors[bKey].desc  %></label>
                         </div>
-                    </form>
+                    <% } %>
                 </div>
-            </div>
-           <%
-             break;
-           case 2: 
-           %>
-            <div class = "panel panel-default">
-                <div class = "panel-heading">
-                    <h3 class = "panel-title"><%= typeof start === 'undefined' ? '' : start %></h3>
-                    <h1>Food & Groceries<h1>
-                </div>
-
-                <div class = "panel-body">
-                    <form>
-                        <!-- add unique ids here, so I can place a label for -->
-                        <div class="form-group">
-                            <div class="checkbox disabled">
-                                <label><input type="checkbox" id="summary-first_meal" value="" <%= first_meal ? 'checked="checked"' : '' %> disabled >Ate In (Lunch)</label>
-                            </div>
-                            <div class="checkbox disabled">
-                                <label><input type="checkbox" id="summary-last_meal" value="" <%= last_meal ? 'checked="checked"' : '' %> disabled >Ate In (Dinner)</label>
-                            </div>
-                            <div class="checkbox disabled">
-                                <label><input type="checkbox" id="summary-prepare_meal" value="" <%= prepare_meal ? 'checked="checked"' : '' %> disabled >Prepared Lunch</label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-           <%
-             break;
-           case 3: 
-           %>
-            <div class = "panel panel-default">
-                <div class = "panel-heading">
-                    <h3 class = "panel-title"><%= typeof start === 'undefined' ? '' : start %></h3>
-                    <h1>Early Start<h1>
-                </div>
-
-                <div class = "panel-body">
-                    <form>
-                        <!-- add unique ids here, so I can place a label for -->
-                        <div class="form-group">
-                            <div class="checkbox disabled">
-                                <label><input type="checkbox" id="summary-morning_wake" value="" <%= morning_wake ? 'checked="checked"' : '' %> disabled >Wake up</label>
-                            </div>
-                            <div class="checkbox disabled">
-                                <label><input type="checkbox" id="summary-morning_run" value="" <%= morning_run ? 'checked="checked"' : '' %> disabled >Morning Run</label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-           <%
-             break;
-           default:
-           } %>
+            </form>
+        </div>
+    </div>
+    <% } %>
 </script>
 
 <!-- TODO MAKE THESE IDS GLOBALLY UNIQUE OR USE CLASSES -->

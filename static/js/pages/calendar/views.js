@@ -44,6 +44,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.habits = options.habits; // collection
             this.eventView = new EventView();
             this.summaryView = new SummaryView({ model: emptyEvent });            
+            this.summaryView.habits = options.habits;
             this.summaryView.render();
         },
         render: function() {
@@ -123,7 +124,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
 
             // Technically, we are mimicking props but we may have a better logic scenario
             // by simply iterating over behaviors of hEvent instead
-            props = _.map(habit.get('behaviors'), function(b) { return b.id });
+            props = Object.keys(habit.get('behaviors'))
             clz = habit.get('flavor');
             var actions = hEvent.get('behaviors');
 
@@ -166,7 +167,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                 // When we change an event in the Backbone Collection
                 // we still need to let Fullcalendar know what to render
                 fcEvent.title = event.get('title');
-                fcEvent.color = habit.get('color'); // TODO FIXME set color based on habit, which will be persisted and need not be CSS
+                fcEvent.color = habit.get('color'); 
                 this.$el.fullCalendar('updateEvent', fcEvent);           
             }
         },
@@ -179,7 +180,16 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
     var SummaryView = Marionette.ItemView.extend({
         el: '#summary',
         className: 'from-views-js',
-        template: _.template($('#summary-template').html())
+        initialize: function() {
+            _.bindAll(this, 'template');
+        },
+        //template: _.template($('#summary-template').html())
+        template: function(hEvent) {
+            console.log('in template function');
+            var habit = this.habits.get(hEvent.type);
+            var context = hEvent.type === null ? hEvent : _.extend(hEvent, { 'habit': habit.attributes });
+            return _.template($('#summary-template').html(), context);
+        }
     });
 
 
