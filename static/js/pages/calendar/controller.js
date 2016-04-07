@@ -15,12 +15,15 @@ define([ "marionette", "pages/calendar/views", "pages/calendar/models" ], functi
         },
         show: function() {
 
-            var events = new Models.Events();
+            var hEvents = new Models.HabitEvents();
+            var habits = new Models.Habits();
 
-            new Views.EventsView({el: $("#calendar"), collection: events}).render()
+            habits.fetch({ reset: true });
+            new Views.HabitsView({ collection: habits }).render();
+
+            new Views.EventsView({el: $("#calendar"), collection: hEvents, habits: habits }).render()
             // we will need a callback here if we trigger an event...
-            events.fetch({ reset: true });
-
+            hEvents.fetch({ reset: true });
             //return msgBus.vent.trigger("app:show", new Views.EventsView);
         }
     };

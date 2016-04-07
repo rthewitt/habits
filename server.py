@@ -29,14 +29,20 @@ parent_app = DispatcherMiddleware(simple, {'/habits': app})
 def root():
     return app.send_static_file('index.html')
 
-@app.route('/events', methods=['GET'])
+@app.route('/habits', methods=['GET'])
 def get_all_habits():
+    with open('json/habits.json') as all_habits:
+        habit_json = all_habits.read()
+    return habit_json
+
+@app.route('/events', methods=['GET'])
+def get_all_habit_events():
     with open('json/all.json') as all_habits:
         habit_json = all_habits.read()
     return habit_json
 
 @app.route('/events', methods=['POST'])
-def post_new_habit():
+def post_new_habit_event():
     content = request.get_json()
     content['id'] = str(uuid.uuid4())
     with open('json/all.json', 'r+') as all_habits:
@@ -48,7 +54,7 @@ def post_new_habit():
     return jsonify(content)
 
 @app.route('/events/<event_id>', methods=['PUT'])
-def update_habit(event_id):
+def update_habit_event(event_id):
     content = request.get_json()
     return jsonify(content)
 

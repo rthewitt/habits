@@ -2,21 +2,32 @@
     {
         "id": 0,
         "name": "No name",
+        "flavor": "NONE",
+        "color": "white",
         "description": "Default nothing"
     },
     {
         "id": 1,
         "name": "Planning",
-        "description": "Bookmark my days by thinking through what needs to be done and how those things fit into my priorities."
+        "flavor": "L2",
+        "color": "#0A2199",
+        "description": "Bookmark my days by thinking through what needs to be done and how those things fit into my priorities.",
+        "behaviors": [{ "id": "plan_morning", "desc": "Morning Planning" }, { "id": "plan_evening", "desc": "Evening Planning" }]
     },
     {
         "id": 2,
-        "name": "Food & Spending",
-        "description": "Waste less money by preparing my own lunches and eating in whenever possible."
+        "name": "Food & Groceries",
+        "flavor": "X3",
+        "color": "#00E957",
+        "description": "Waste less money by preparing my own lunches and eating in whenever possible.",
+        "behaviors": [{ "id": "first_meal", "desc": "Ate In (Lunch)" }, { "id": "prepare_meal", "desc": "Prepared Lunch" }, { "id": "last_meal", "desc": "Ate In (Dinner)" }]
     },
     {
         "id": 3,
         "name": "Early Start",
-        "description": "Get an early start to my day, and get into the right mindset by running, stretching or working out."
+        "flavor": "X2",
+        "color": "#08A5E1",
+        "description": "Get an early start to my day, and get into the right mindset by running, stretching or working out.",
+        "behaviors": [{ "id": "morning_wake", "desc": "Wake Up" }, { "id": "morning_run", "desc": "Morning Run" }]
     }
 ]

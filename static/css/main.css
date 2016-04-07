@@ -63,143 +63,122 @@ h1, h2, h3, .fc-day-header, .fc-day-number, button, .fc button, select, label {
     background-color: white;
 }
 
-a.fc-habit-plan-0-0 {
+a.fc-habit-L2-0-0 {
     height: 25px;
-    background-color: #0A2199;
-    border-color: #0A2199;
 }
 
-a.fc-habit-plan-1-0 {
+a.fc-habit-L2-1-0 {
     height: 25px;
     background-size: 128px 10px;
-    background-color: #0A2199;
-    border-color: #0A2199;
     background-repeat: no-repeat;
     background-position: 0px 0px;
     background-image: url("../images/habits/white-horiz-bar-only.svg");
 }
 
-a.fc-habit-plan-0-1 {
+a.fc-habit-L2-0-1 {
     height: 25px;
     background-size: 128px 10px;
-    background-color: #0A2199;
-    border-color: #0A2199;
     background-repeat: no-repeat;
     background-position: 0px 16px;
     background-image: url("../images/habits/white-horiz-bar-only.svg");
 }
 
-a.fc-habit-plan-1-1 {
+a.fc-habit-L2-1-1 {
     height: 25px;
     background-size: 128px 10px;
-    background-color: #0A2199;
-    border-color: #0A2199;
     background-repeat: no-repeat;
     background-position: 0px 0px, 0px 16px, center;
     background-image: url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-horiz-bar-only.svg");
 }
 
-a.fc-habit-food-0-0-0 {
+a.fc-habit-X3-0-0-0 {
     height: 36px;
-    background-color: #00E957;
-    border-color: #00E957;
 }
-a.fc-habit-food-0-0-1 {
+a.fc-habit-X3-0-0-1 {
     height: 36px;
-    background-color: #00E957;
-    border-color: #00E957;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: right;
     background-image: url("../images/habits/white-only.svg");
 }
-a.fc-habit-food-0-1-0 {
+a.fc-habit-X3-0-1-0 {
     height: 36px;
-    background-color: #00E957;
-    border-color: #00E957;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url("../images/habits/white-x-only.svg");
 }
-a.fc-habit-food-0-1-1 {
+a.fc-habit-X3-0-1-1 {
     height: 36px;
-    background-color: #00E957;
-    border-color: #00E957;
     background-size: auto, 100%;
     background-repeat: no-repeat;
     background-position: right, left;
     background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-x-only.svg");
 }
-a.fc-habit-food-1-0-0 {
+a.fc-habit-X3-1-0-0 {
     height: 36px;
-    background-color: #00E957;
-    border-color: #00E957;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url("../images/habits/white-only.svg");
 }
-a.fc-habit-food-1-0-1 {
+a.fc-habit-X3-1-0-1 {
     height: 36px;
-    background-color: #00E957;
-    border-color: #00E957;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left, right;
     background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-only.svg");
 }
-a.fc-habit-food-1-1-0 {
+a.fc-habit-X3-1-1-0 {
     height: 36px;
-    background-color: #00E957;
-    border-color: #00E957;
     background-size: auto;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-x-only.svg");
 }
-a.fc-habit-food-1-1-1 {
+a.fc-habit-X3-1-1-1 {
     height: 36px;
-    background-color: #00E957;
-    border-color: #00E957;
     background-size: auto, auto, 128px 10px, 128px 10px, 100%;
     background-repeat: no-repeat;
     background-position: left, right, 0px -3px, 0px 29px, left;
     background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-x-only.svg");
 }
 
-a.fc-habit-morning-0-0 {
+a.fc-habit-X2-0-0 {
     height: 36px;
-    background-color: #08A5E1;
 }
 
-a.fc-habit-morning-1-0 {
+a.fc-habit-X2-1-0 {
     height: 36px;
     background-size: 100%;
-    background-color: #08A5E1;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url("../images/habits/white-x-2.svg");
 }
 
-a.fc-habit-morning-0-1 {
+a.fc-habit-X2-0-1 {
     height: 36px;
     background-size: 100%;
-    background-color: #08A5E1;
     background-repeat: no-repeat;
     background-position: left;
     background-image: url("../images/habits/white-x-1.svg");
 }
 
-a.fc-habit-morning-1-1 {
+a.fc-habit-X2-1-1 {
     height: 36px;
     background-size: auto, auto, 128px 10px, 128px 10px, 100%;
-    border-color: #08A5E1;
-    background-color: #08A5E1;
     background-repeat: no-repeat;
     background-position: left, right, 0px -3px, 0px 29px, left;;
     background-image: url("../images/habits/white-only.svg"), url("../images/habits/white-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-horiz-bar-only.svg"), url("../images/habits/white-x-only.svg");
 }
+
+/*
+ * BACKGROUND COLORS: (also border, may require eventRender css)
+ *
+ * L2: background-color: #0A2199;
+ * X3: background-color: #00E957;
+ * X2: background-color: #08A5E1;
+ */
 
 a.fc-day-grid-event {
     margin-top: 7px;
