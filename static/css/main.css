@@ -185,6 +185,21 @@ a.fc-day-grid-event {
     margin-bottom: 7px;
 }
 
+a.bg-green {
+    background-color: #00E957;
+    border-color: #00E957;
+}
+
+a.bg-light-blue {
+    background-color: #08A5E1;
+    border-color: #08A5E1;
+}
+
+a.bg-dark-blue {
+    background-color: #0A2199;
+    border-color: #0A2199;
+}
+
 a.fc-selected {
     border-color: #FF2C00;
     border-width: 2px;

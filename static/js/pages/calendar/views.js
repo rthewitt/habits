@@ -129,7 +129,8 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             var actions = hEvent.get('behaviors');
 
             var color = habit.get('color');
-            elem.css({ 'background-color': color, 'border-color': color });
+            elem.addClass('bg-'+color);
+            //elem.css({ 'background-color': color, 'border-color': color });
 
 
             // TODO FIXME - now we want a class like habit-food except habit-<num_behaviors>

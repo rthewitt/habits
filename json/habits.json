@@ -10,7 +10,7 @@
         "id": 1,
         "name": "Planning",
         "flavor": "L2",
-        "color": "#0A2199",
+        "color": "dark-blue",
         "description": "Bookmark my days by thinking through what needs to be done and how those things fit into my priorities.",
         "behaviors": { "plan_morning": { "desc": "Morning Planning" }, "plan_evening": { "desc": "Evening Planning" } }
     },
@@ -18,7 +18,7 @@
         "id": 2,
         "name": "Food & Groceries",
         "flavor": "X3",
-        "color": "#00E957",
+        "color": "green",
         "description": "Waste less money by preparing my own lunches and eating in whenever possible.",
         "behaviors": { "first_meal": { "desc": "Ate In (Lunch)" }, "prepare_meal": { "desc": "Prepared Lunch" }, "last_meal": { "desc": "Ate In (Dinner)" } }
     },
@@ -26,7 +26,7 @@
         "id": 3,
         "name": "Early Start",
         "flavor": "X2",
-        "color": "#08A5E1",
+        "color": "light-blue",
         "description": "Get an early start to my day, and get into the right mindset by running, stretching or working out.",
         "behaviors": { "morning_wake": { "desc": "Wake Up" }, "morning_run": { "desc": "Morning Run" } }
     }
