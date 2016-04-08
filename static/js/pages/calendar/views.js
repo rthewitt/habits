@@ -42,7 +42,8 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.collection.bind('destroy', this.destroy);
 
             this.habits = options.habits; // collection
-            this.eventView = new EventView();
+            this.eventView = new EventView;
+            this.eventView.habits = options.habits;
             this.summaryView = new SummaryView({ model: emptyEvent });            
             this.summaryView.habits = options.habits;
             this.summaryView.render();
@@ -76,14 +77,12 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             //this.$el.fullCalendar('renderEvent', event.toJSON());
         },        
         select: function(startDate, endDate) {
-                    console.log('at least this is working');
-                    debugger;
             this.eventView.collection = this.collection;
             // TODO we should have a list of "current ongoing habits" that render out each new day - manual add only for the past
-            // TODO make this new event create only
-            var eventType = Number($('#active-habit-type').val());
-            // TODO FIXME this no longer exists
-            this.eventView.model = Models.getModelForAttrs({ type: eventType, allDay: true, start: startDate.toISOString() });
+            var habitType = Number($('#active-habit-type').val());
+            var habit = this.habits.get(habitType);
+            this.eventView.model = new Models.HabitEvent({ allDay: true, start: startDate.toISOString() }, { fromHabit: habit });
+            this.eventView.habit = habit;
             this.eventView.render();            
         },
         eventMouseOver: function(fcEvent) {
@@ -128,32 +127,16 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             clz = habit.get('flavor');
             var actions = hEvent.get('behaviors');
 
-            var color = habit.get('color');
-            elem.addClass('bg-'+color);
-            //elem.css({ 'background-color': color, 'border-color': color });
-
-
-            // TODO FIXME - now we want a class like habit-food except habit-<num_behaviors>
-            // except we will have more than one such type for a habit of two behaviors
-            // so a better method is placing a prop on the habit ITSELF.
-            // We can make all of this simpler by making the hEvent type parameter have a string
-            // that corresponds to the id of habit, and that string will be used as the css class
-            // habit-<type>
-            // not much would change here at all, and we could theoretically remove the habit collection
-            // from this View.  Don't have to, but we won't need it.
-            // well now, that's not entirely true is it?
-            // because plan_<food> wouldn't allow us to reuse that class but in a different color
-            // therefore we need a flavor attribute on the habit object itself.
-            // we could achieve reuse by FLAVOR<num_behaviors> which is sort of what we're doing
-            // and then we could establish versions for 0..N for each added flavor
             numHabits = props.length;
             append = _.reduce(props, function(memo, item){ 
-
                 console.log("memo " + memo);
                 var wasTrue = actions[item];
                 console.log('wasTrue: '+wasTrue);
                 return memo + Number(wasTrue) + (props.indexOf(item) == numHabits-1 ? '' : '-')
                 }, '-')
+
+            var color = habit.get('color');
+            elem.addClass('bg-'+color);
             elem.addClass('fc-habit-'+clz+append);
             elem.addClass( ( append.indexOf('0') === -1 ? 'complete' : 'incomplete' ) )
         },
@@ -184,9 +167,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         initialize: function() {
             _.bindAll(this, 'template');
         },
-        //template: _.template($('#summary-template').html())
         template: function(hEvent) {
-            console.log('in template function');
             var habit = this.habits.get(hEvent.type);
             var context = hEvent.type === null ? hEvent : _.extend(hEvent, { 'habit': habit.attributes });
             return _.template($('#summary-template').html(), context);
@@ -203,7 +184,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         },
         
         initialize: function() {
-            _.bindAll(this, 'render', 'save', 'close', 'destroy');           
+            _.bindAll(this, 'render', 'save', 'close', 'destroy', 'template');           
             //this.$el.on('show.bs.modal', this.open);
         },
 
@@ -212,37 +193,20 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             return this;
         },        
 
-        template: _.template($('#details-template').html()),
+        template: function(hEvent) {
+            var habit = this.habits.get(hEvent.type);
+            var context = hEvent.type === null ? hEvent : _.extend(hEvent, { 'habit': habit.attributes });
+            return _.template($('#create-template').html(), context);
+        },
 
         save: function() {
-
+                  //debugger;
             // assumes model has already been set??
             if (this.model.isNew()) {
-                switch(this.model.get('type')) {
-                    // planning
-                    case 1:
-                        this.model.set({
-                            'plan_morning': this.$('#plan_morning').is(':checked'),
-                            'plan_evening': this.$('#plan_evening').is(':checked')
-                        });
-                        break;
-                    // food
-                    case 2:
-                        this.model.set({
-                            'prepare_meal': this.$('#prepare_meal').is(':checked'),
-                            'first_meal': this.$('#first_meal').is(':checked'),
-                            'last_meal': this.$('#last_meal').is(':checked')
-                        });
-                        break;
-                    // morning
-                    case 3:
-                        this.model.set({
-                            'morning_wake': this.$('#morning_wake').is(':checked'),
-                            'morning_run': this.$('#morning_run').is(':checked')
-                        });
-                        break;
-                    default:
-                        break;
+                thisBehav = this.model.get('behaviors');
+                for(var b in this.habit.get('behaviors')) {
+                    console.log('saving '+b);
+                    thisBehav[b] = this.$('#'+b).is(':checked');
                 }
                 this.model.save();
                 this.collection.add(this.model, {success: this.close});

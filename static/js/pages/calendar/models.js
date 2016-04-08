@@ -30,27 +30,32 @@ define([ 'backbone' ], function(Backbone) {
     var Events = Backbone.Collection.extend({
         model: Event,
         url: 'events'
-        // TODO remove this after changing all Events to HabitEvents
-        /*
-        model: function(attrs, options) {
-            console.log('old event collection model function');
-            return _getModelForAttrs(attrs, options);
-        }
-        */
     }); 
 
     // We are not using inheritance because it doesn't work as expected
     var HabitEvent = Backbone.Model.extend({
+
+        urlRoot: 'hevents',
+
         defaults: {
             'title': '',
-            'type': null, // reference to habit
+            'type': null, // currently id of habit
             'start': undefined,
             'end': undefined,
             'behaviors': {},
         },
-        initialize: function() {
-            console.log('created habit event');
+
+        initialize: function(attrs, opts) {
+            if(opts && opts.fromHabit) {
+                this.set('type', opts.fromHabit.get('id'));
+                var fromBehav = opts.fromHabit.get('behaviors'); 
+                var thisBehav = this.get('behaviors'); 
+                for(var b in fromBehav) {
+                    if(!(b in thisBehav)) thisBehav[b] = false;
+                }
+            }
         },
+
         isComplete: function() {
             var behav = this.get('behaviors');
             for(var k in behav) {
@@ -62,56 +67,12 @@ define([ 'backbone' ], function(Backbone) {
         }
     });
 
+
     var HabitEvents = Backbone.Collection.extend({
         model: HabitEvent,
-        url: 'events'
+        url: 'hevents'
     });
 
-    /*
-    var PlanEvent = Event.extend({
-        defaults: {
-            'type': 1,
-            'plan_morning': false,
-            'plan_evening': false
-        }
-    });
-
-    var FoodEvent = Event.extend({
-        defaults: {
-            'type': 2,
-            'prepare_meal': false,
-            'first_meal': false,
-            'last_meal': false
-        }
-    });
-
-    var MorningEvent = Event.extend({
-        defaults: { 
-            'type': 3,
-            'morning_wake': false,
-            'morning_run': false
-        }
-    });
-
-
-    // call with { type: X } for new Model
-    function _getModelForAttrs(attrs, options) {
-        options = options || {};
-        switch(attrs.type) {
-            case 1:
-                // planning
-                return new PlanEvent(attrs, options);
-            case 2:
-                // food & spending 
-                return new FoodEvent(attrs, options);
-            case 3:
-                // morning routine
-                return new MorningEvent(attrs, options);
-            default:
-                return new Event(attrs, options);
-        }
-    }
-    */
 
     return {
         Event: Event,

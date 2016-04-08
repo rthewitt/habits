@@ -35,13 +35,13 @@ def get_all_habits():
         habit_json = all_habits.read()
     return habit_json
 
-@app.route('/events', methods=['GET'])
+@app.route('/hevents', methods=['GET'])
 def get_all_habit_events():
     with open('json/all.json') as all_habits:
         habit_json = all_habits.read()
     return habit_json
 
-@app.route('/events', methods=['POST'])
+@app.route('/hevents', methods=['POST'])
 def post_new_habit_event():
     content = request.get_json()
     content['id'] = str(uuid.uuid4())
@@ -49,11 +49,11 @@ def post_new_habit_event():
         habit_json = json.loads(all_habits.read())
         habit_json.append(content)
         all_habits.seek(0)
-        all_habits.write(json.dumps(habit_json))
+        all_habits.write(json.dumps(habit_json, indent=2))
         all_habits.truncate()
     return jsonify(content)
 
-@app.route('/events/<event_id>', methods=['PUT'])
+@app.route('/hevents/<event_id>', methods=['PUT'])
 def update_habit_event(event_id):
     content = request.get_json()
     return jsonify(content)
