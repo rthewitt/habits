@@ -23,7 +23,23 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
     });
 
     var HabitView = Marionette.ItemView.extend({
-        template: _.template('<div class="foo"><%- name %></div>')
+        template: _.template($('#habit-template').html()),
+        events: {
+            'click select': 'onClick',
+            'change select': 'onChange'
+        },
+        onClick: function(ev) {
+            $(ev.target).removeClass();
+        },
+        onChange: function(ev) {
+            cp = ev.target;
+            var color = cp.options[cp.selectedIndex].value;
+            $(cp).removeClass();
+            $(cp).addClass('bg-'+color);
+            this.model.set('color', color);
+
+            msgBus.vent.trigger('color-change', { habitId: this.model.get('id'), 'color': color });
+        }
     });
 
     var HabitsView = Marionette.CollectionView.extend({
@@ -47,6 +63,12 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
             this.summaryView = new SummaryView({ model: emptyEvent });            
             this.summaryView.habits = options.habits;
             this.summaryView.render();
+
+            var self = this;
+            msgBus.vent.on('color-change', function(data) {
+                console.log("I received color-change to " + data.color + "for habit with id="+data.habitId);
+                self.$el.fullCalendar('rerenderEvents');
+            });
         },
         render: function() {
             this.$el.fullCalendar({
@@ -129,9 +151,7 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
 
             numHabits = props.length;
             append = _.reduce(props, function(memo, item){ 
-                console.log("memo " + memo);
                 var wasTrue = actions[item];
-                console.log('wasTrue: '+wasTrue);
                 return memo + Number(wasTrue) + (props.indexOf(item) == numHabits-1 ? '' : '-')
                 }, '-')
 

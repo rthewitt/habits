@@ -1,33 +1,57 @@
 [
-    {
-        "id": 0,
-        "name": "No name",
-        "flavor": "NONE",
-        "color": "white",
-        "description": "Default nothing"
-    },
-    {
-        "id": 1,
-        "name": "Planning",
-        "flavor": "L2",
-        "color": "dark-blue",
-        "description": "Bookmark my days by thinking through what needs to be done and how those things fit into my priorities.",
-        "behaviors": { "plan_morning": { "desc": "Morning Planning" }, "plan_evening": { "desc": "Evening Planning" } }
-    },
-    {
-        "id": 2,
-        "name": "Food & Groceries",
-        "flavor": "X3",
-        "color": "green",
-        "description": "Waste less money by preparing my own lunches and eating in whenever possible.",
-        "behaviors": { "first_meal": { "desc": "Ate In (Lunch)" }, "prepare_meal": { "desc": "Prepared Lunch" }, "last_meal": { "desc": "Ate In (Dinner)" } }
-    },
-    {
-        "id": 3,
-        "name": "Early Start",
-        "flavor": "X2",
-        "color": "light-blue",
-        "description": "Get an early start to my day, and get into the right mindset by running, stretching or working out.",
-        "behaviors": { "morning_wake": { "desc": "Wake Up" }, "morning_run": { "desc": "Morning Run" } }
-    }
+  {
+    "color": "white", 
+    "flavor": "NONE", 
+    "description": "Default nothing", 
+    "name": "No name", 
+    "id": 0
+  }, 
+  {
+    "behaviors": {
+      "plan_morning": {
+        "desc": "Morning Planning"
+      }, 
+      "plan_evening": {
+        "desc": "Evening Planning"
+      }
+    }, 
+    "description": "Bookmark my days by thinking through what needs to be done and how those things fit into my priorities.", 
+    "color": "dark-blue", 
+    "flavor": "L2", 
+    "id": 1, 
+    "name": "Planning"
+  }, 
+  {
+    "behaviors": {
+      "prepare_meal": {
+        "desc": "Prepared Lunch"
+      }, 
+      "first_meal": {
+        "desc": "Ate In (Lunch)"
+      }, 
+      "last_meal": {
+        "desc": "Ate In (Dinner)"
+      }
+    }, 
+    "description": "Waste less money by preparing my own lunches and eating in whenever possible.", 
+    "color": "green", 
+    "flavor": "X3", 
+    "id": 2, 
+    "name": "Food & Groceries"
+  }, 
+  {
+    "behaviors": {
+      "morning_wake": {
+        "desc": "Wake Up"
+      }, 
+      "morning_run": {
+        "desc": "Morning Run"
+      }
+    }, 
+    "description": "Get an early start to my day, and get into the right mindset by running, stretching or working out.", 
+    "color": "light-blue", 
+    "flavor": "X2", 
+    "id": 3, 
+    "name": "Early Start"
+  }
 ]

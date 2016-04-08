@@ -35,6 +35,20 @@ def get_all_habits():
         habit_json = all_habits.read()
     return habit_json
 
+@app.route('/habits/<habit_id>', methods=['PUT'])
+def update_habit(habit_id):
+    content = request.get_json()
+    with open('json/habits.json', 'r+') as all_habits:
+        habit_json = json.loads(all_habits.read())
+        for habit in habit_json:
+            if habit['id'] == int(habit_id):
+                habit.update(content)
+                break
+        all_habits.seek(0)
+        all_habits.write(json.dumps(habit_json, indent=2))
+        all_habits.truncate()
+    return jsonify(content)
+
 @app.route('/hevents', methods=['GET'])
 def get_all_habit_events():
     with open('json/all.json') as all_habits:
@@ -53,6 +67,8 @@ def post_new_habit_event():
         all_habits.truncate()
     return jsonify(content)
 
+# This is a no-op because you can't modify past habits
+# naturally this will change soon.
 @app.route('/hevents/<event_id>', methods=['PUT'])
 def update_habit_event(event_id):
     content = request.get_json()

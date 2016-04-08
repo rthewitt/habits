@@ -46,6 +46,13 @@ h1, h2, h3, .fc-day-header, .fc-day-number, button, .fc button, select, label {
     width: 20%;
 }
 
+#habit-list {
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    width: 20%;
+}
+
 #summary {
     position: absolute;
     left: 5%;
@@ -185,17 +192,31 @@ a.fc-day-grid-event {
     margin-bottom: 7px;
 }
 
-a.bg-green {
+select[id^=color-picker] {
+    width: 120px;
+}
+
+.bg-green, a.bg-green {
     background-color: #00E957;
     border-color: #00E957;
 }
 
-a.bg-light-blue {
+.bg-orange, a.bg-orange {
+    background-color: #FF2C00;
+    border-color: #FF2C00;
+}
+
+.bg-pink, a.bg-pink {
+    background-color: #F30066;
+    border-color: #F30066;
+}
+
+.bg-light-blue, a.bg-light-blue {
     background-color: #08A5E1;
     border-color: #08A5E1;
 }
 
-a.bg-dark-blue {
+.bg-dark-blue, a.bg-dark-blue {
     background-color: #0A2199;
     border-color: #0A2199;
 }

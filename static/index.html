@@ -45,6 +45,20 @@
 	</body>
 </html>
 
+<script id="habit-template" type="text/html">
+    <% if(id) { %>
+    <div id="habit-type-<%- id %>">
+        <label for="color-picker"><%- name %></label>
+        <select id="color-picker-<%- id %>" class="bg-<%- color %>">
+            <option value="green" class="bg-green" <%- ( color == 'green' ? 'selected="selected"' : '' ) %> >Green</option>
+            <option value="orange" class="bg-orange" <%- ( color == 'orange' ? 'selected="selected"' : '' ) %> >Orange</option>
+            <option value="pink" class="bg-pink" <%- ( color == 'pink' ? 'selected="selected"' : '' ) %> >Pink</option>
+            <option value="light-blue" class="bg-light-blue" <%- ( color == 'light-blue' ? 'selected="selected"' : '' ) %> >Light Blue</option>
+            <option value="dark-blue" class="bg-dark-blue" <%- ( color == 'dark-blue' ? 'selected="selected"' : '' ) %> >Dark Blue</option>
+        </select>
+    </div>
+    <% } %>
+</script>
 <!-- 
 Using IDs here is ok, because we are only creating one copy
 But soon we'll be sharing the template with other views
