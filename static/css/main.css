@@ -26,10 +26,6 @@ h1, h2, h3, .fc-day-header, .fc-day-number, button, .fc button, select, label {
     margin: 10 auto;
 }
 
-#habit-type {
-    height: 30px;
-    width: 40px;
-}
 
 #event-details .delete-event, #event-details .edit, #event-details.edit .new {
     display: none;
@@ -41,21 +37,20 @@ h1, h2, h3, .fc-day-header, .fc-day-number, button, .fc button, select, label {
 
 #active-habit-area {
     position: absolute;
-    right: 5%;
+    right: 2%;
     top: 30%;
-    width: 20%;
+    width: 15%;
 }
 
 #habit-list {
     position: absolute;
-    right: 5%;
-    top: 10%;
+    right: 2%;
+    top: 45%;
     width: 20%;
 }
 
 #summary {
     position: absolute;
-    left: 5%;
     top: 30%;
     width: 20%;
 }
@@ -240,6 +235,7 @@ a.fc-event:hover {
 
 #calendar { 
     float: right;
-    width: 900px;
-    margin-right: 25%;
+    /*width: 900px;*/
+    width: 60%;
+    margin-right: 20%;
 }

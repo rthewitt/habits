@@ -26,7 +26,8 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         template: _.template($('#habit-template').html()),
         events: {
             'click select': 'onClick',
-            'change select': 'onChange'
+            'change select': 'onChange',
+            'mouseout select': 'onChange'
         },
         onClick: function(ev) {
             $(ev.target).removeClass();
