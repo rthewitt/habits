@@ -35,17 +35,10 @@ h1, h2, h3, .fc-day-header, .fc-day-number, button, .fc button, select, label {
     display: block;
 }
 
-#active-habit-area {
+#habit-area {
     position: absolute;
     right: 2%;
     top: 30%;
-    width: 15%;
-}
-
-#habit-list {
-    position: absolute;
-    right: 2%;
-    top: 45%;
     width: 20%;
 }
 
@@ -238,4 +231,8 @@ a.fc-event:hover {
     /*width: 900px;*/
     width: 60%;
     margin-right: 20%;
+}
+
+.fc-highlight {
+    background-color: #FFB600;
 }

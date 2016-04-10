@@ -2,6 +2,7 @@ require.config({
     paths: {
         "jquery": ["http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min",
                     "libs/jquery/dist/jquery.min"],
+        "jquery-ui": "libs/jquery-ui/jquery-ui.min",
         "bootstrap": "libs/bootstrap/js/bootstrap",
         "socketio": "libs/socketio/socket.io-1.3.7",
         "underscore": "libs/underscore/underscore",
@@ -21,6 +22,10 @@ require.config({
             deps: ["jquery", "underscore"],
             exports: "Backbone"
         }, 
+        "jquery-ui": {
+            deps: ["jquery"],
+            exports: "$"
+        }, 
         "bootstrap": ["jquery"],
         "dragevent": ["jquery"],
         "dropevent": ["jquery"]
@@ -32,6 +37,7 @@ require([ 'jquery', 'socketio', 'backbone', 'marionette', 'mustache',
         'pages/calendar/controller',
         'config',
         // consume
+        'jquery-ui',
         'bootstrap',
         'moment',
         'fullcalendar'

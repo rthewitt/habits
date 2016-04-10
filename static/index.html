@@ -20,26 +20,14 @@
 	</head>
 	<body>
         <!-- TODO make this an actual habit template!! -->
-        <div id="active-habit-area">
-            <h3>Habit Type</h3>
-            <form>
-            <input id="active-habit-type" type="number" min="0" max="3" value="1" style="display: none;" />
-            <select id="habit-type-select">
-                <option value="1" selected="selected">Planning & Prep</option>
-                <option value="2">Food & Groceries</option>
-                <option value="3">Morning Routine</option>
-            </select>
-            </form>
-        </div>
+        <div id="habit-area"></div>
         <div id='page-container'>
 		    <div id='summary'></div>		
             <div id='calendar'></div>		
         </div>		
 
         <!-- move this into the template itself and use className -->
-        <div id="habit-list">
-        </div>
-		
+        <div id="habit-list"></div>
 		<div id='event-details' class='modal fade' role="dialog">
 		</div>		
 	</body>
@@ -48,7 +36,7 @@
 <script id="habit-template" type="text/html">
     <% if(id) { %>
     <div id="habit-type-<%- id %>">
-        <label for="color-picker"><%- name %></label>
+        <label for="color-picker-<%- id %>" habit="<%- id %>"><%- name %></label>
         <select id="color-picker-<%- id %>" class="bg-<%- color %>">
             <option value="green" class="bg-green" <%- ( color == 'green' ? 'selected="selected"' : '' ) %> >Green</option>
             <option value="orange" class="bg-orange" <%- ( color == 'orange' ? 'selected="selected"' : '' ) %> >Orange</option>

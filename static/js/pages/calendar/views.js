@@ -44,14 +44,17 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
     });
 
     var HabitsView = Marionette.CollectionView.extend({
-        el: '#habit-list',
-        childView: HabitView
+        el: '#habit-area',
+        childView: HabitView,
+        onRender: function() {
+            this.$('label').draggable({ helper: 'clone' });
+        }
     });
 
     // Do we really want EventView and SummaryView to belong here?
     var EventsView = Marionette.ItemView.extend({
         initialize: function(options){
-            _.bindAll(this, 'select', 'addAll', 'addOne', 'change', 'destroy', 'eventClick', 'eventRender', 'eventMouseOver', 'eventMouseOut'); 
+            _.bindAll(this, 'habitDrop', 'addAll', 'addOne', 'change', 'destroy', 'eventClick', 'eventRender', 'eventMouseOver', 'eventMouseOut'); 
 
             this.collection.bind('reset', this.addAll);
             this.collection.bind('add', this.addOne);
@@ -78,11 +81,12 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
                     left: 'month,basicWeek',
                     right: 'prev,next today'
                 },
-                selectable: true,
-                selectHelper: true,
                 editable: true,
+                eventStartEditable: false, // disable dragging
+                eventDurationEditable: false, // disable resize 
+                droppable: true,
+                drop: this.habitDrop, 
                 ignoreTimezone: false,                
-                select: this.select,
                 eventClick: this.eventClick,
                 eventMouseover: this.eventMouseOver,
                 eventMouseout: this.eventMouseOut,
@@ -96,13 +100,13 @@ define([ 'marionette', 'pages/calendar/models', 'pages/calendar/templates' ], fu
         },
         // we have added to the collection? Where?
         addOne: function(event) {
-            console.log("Ok, we added to the collection, but the SERVER will be giving us the id, so let's wait until we get a response before rendering!")
+            console.log("Ok, we added to the collection, but the SERVER will be giving us the id, so let's wait until we get a response before rendering!");
             //this.$el.fullCalendar('renderEvent', event.toJSON());
         },        
-        select: function(startDate, endDate) {
+        // as long as we don't attach data to the draggable, we will end up here without a render
+        habitDrop: function(startDate, ev, dragData) {
             this.eventView.collection = this.collection;
-            // TODO we should have a list of "current ongoing habits" that render out each new day - manual add only for the past
-            var habitType = Number($('#active-habit-type').val());
+            var habitType = Number($(ev.target).attr('habit'));
             var habit = this.habits.get(habitType);
             this.eventView.model = new Models.HabitEvent({ allDay: true, start: startDate.toISOString() }, { fromHabit: habit });
             this.eventView.habit = habit;
